@@ -1,1327 +1,795 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Robot Security | Seguridad Inteligente</title>
+    <title>Zárate Security | Seguridad Profesional</title>
 
-<style>
+    <meta name="description"
+        content="Zárate Security - Seguridad residencial, corporativa, VIP y soluciones tecnológicas.">
 
-:root {
-    --green: #00ff66;
-    --dark-green: #008f3b;
-    --black: #000000;
-    --panel: #061009;
-    --gray: #aab5ae;
-}
+    <link rel="stylesheet" href="styles.css">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #000;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-}
-
-/* ================================
-   MATRIX
-================================ */
-
-#matrix {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background: #000;
-}
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at center, rgba(0,255,102,0.10), transparent 55%),
-        rgba(0,0,0,0.65);
-}
-
-/* ================================
-   PANTALLA DE INICIO
-================================ */
-
-#intro {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    transition: 1s;
-}
-
-#intro.ocultar {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.intro-box {
-    text-align: center;
-    padding: 25px;
-}
-
-.robot-intro {
-    width: min(320px, 75vw);
-    margin: auto;
-    animation: flotar 3s ease-in-out infinite;
-    filter:
-        drop-shadow(0 0 10px #00ff66)
-        drop-shadow(0 0 30px #00ff66)
-        drop-shadow(0 0 60px rgba(0,255,102,0.8));
-}
-
-.robot-intro svg {
-    width: 100%;
-}
-
-.intro-box h1 {
-    color: var(--green);
-    font-size: clamp(38px, 7vw, 70px);
-    letter-spacing: 6px;
-    margin-top: 15px;
-    text-shadow:
-        0 0 15px var(--green),
-        0 0 40px var(--green);
-}
-
-.intro-box p {
-    color: #fff;
-    margin-top: 12px;
-    letter-spacing: 3px;
-    font-size: 13px;
-}
-
-.loading {
-    width: min(450px, 90%);
-    height: 6px;
-    margin: 30px auto 12px;
-    border: 1px solid var(--green);
-    background: #041008;
-}
-
-.loading-bar {
-    width: 0;
-    height: 100%;
-    background: var(--green);
-    box-shadow: 0 0 25px var(--green);
-    animation: cargar 5s linear forwards;
-}
-
-.loading-text {
-    color: var(--green);
-    font-family: monospace;
-    letter-spacing: 2px;
-    font-size: 12px;
-}
-
-@keyframes cargar {
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes flotar {
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-/* ================================
-   HEADER
-================================ */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    z-index: 100;
-    padding: 0 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.88);
-    border-bottom: 1px solid rgba(0,255,102,0.4);
-    backdrop-filter: blur(10px);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-icon {
-    width: 52px;
-    height: 52px;
-    padding: 8px;
-    border: 1px solid var(--green);
-    border-radius: 50%;
-}
-
-.logo-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.logo-text strong {
-    display: block;
-    color: var(--green);
-    letter-spacing: 2px;
-    font-size: 18px;
-}
-
-.logo-text span {
-    color: #aaa;
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-}
-
-nav a {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-nav a:hover {
-    color: var(--green);
-}
-
-/* ================================
-   HERO
-================================ */
-
-.hero {
-    min-height: 100vh;
-    padding: 125px 8% 70px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 50px;
-}
-
-.badge {
-    display: inline-block;
-    color: var(--green);
-    border: 1px solid var(--green);
-    padding: 9px 15px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    background: rgba(0,255,102,0.06);
-}
-
-.hero h1 {
-    margin-top: 22px;
-    font-size: clamp(45px, 6vw, 82px);
-    line-height: 1;
-}
-
-.hero h1 span {
-    color: var(--green);
-    text-shadow: 0 0 30px var(--green);
-}
-
-.hero p {
-    color: var(--gray);
-    margin-top: 25px;
-    line-height: 1.8;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.btn {
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.btn-main {
-    background: var(--green);
-    color: #000;
-    box-shadow: 0 0 25px rgba(0,255,102,0.5);
-}
-
-.btn-second {
-    border: 1px solid var(--green);
-    color: var(--green);
-}
-
-.robot-area {
-    display: flex;
-    justify-content: center;
-}
-
-.robot-circle {
-    width: min(480px, 85vw);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 2px solid rgba(0,255,102,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background:
-        radial-gradient(circle, rgba(0,255,102,0.14), rgba(0,0,0,0.9) 65%);
-    box-shadow:
-        0 0 40px rgba(0,255,102,0.3),
-        inset 0 0 45px rgba(0,255,102,0.12);
-}
-
-.robot-circle::before {
-    content: "";
-    position: absolute;
-    inset: 15px;
-    border: 1px dashed rgba(0,255,102,0.5);
-    border-radius: 50%;
-    animation: girar 15s linear infinite;
-}
-
-.robot-main {
-    width: 85%;
-    z-index: 2;
-    animation: flotar 3s ease-in-out infinite;
-    filter:
-        drop-shadow(0 0 10px var(--green))
-        drop-shadow(0 0 30px var(--green));
-}
-
-.robot-main svg {
-    width: 100%;
-}
-
-@keyframes girar {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* ================================
-   ESTADÍSTICAS
-================================ */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
-    padding: 35px 8%;
-    border-top: 1px solid rgba(0,255,102,0.2);
-    border-bottom: 1px solid rgba(0,255,102,0.2);
-    background: rgba(0,255,102,0.04);
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat strong {
-    display: block;
-    color: var(--green);
-    font-size: 28px;
-}
-
-.stat span {
-    color: var(--gray);
-    font-size: 12px;
-}
-
-/* ================================
-   SECCIONES
-================================ */
-
-.section {
-    padding: 100px 8%;
-}
-
-.section-title {
-    text-align: center;
-    max-width: 700px;
-    margin: auto auto 50px;
-}
-
-.section-title small {
-    color: var(--green);
-    letter-spacing: 4px;
-}
-
-.section-title h2 {
-    margin-top: 15px;
-    font-size: clamp(32px, 4vw, 50px);
-}
-
-.section-title p {
-    color: var(--gray);
-    margin-top: 18px;
-    line-height: 1.8;
-}
-
-/* ================================
-   SERVICIOS
-================================ */
-
-.services {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 22px;
-}
-
-.card {
-    padding: 30px;
-    min-height: 240px;
-    background: rgba(0,0,0,0.55);
-    border: 1px solid rgba(0,255,102,0.25);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: var(--green);
-    box-shadow: 0 15px 35px rgba(0,255,102,0.1);
-}
-
-.card .icon {
-    font-size: 40px;
-}
-
-.card h3 {
-    margin-top: 20px;
-}
-
-.card p {
-    margin-top: 15px;
-    color: var(--gray);
-    line-height: 1.7;
-}
-
-/* ================================
-   NOSOTROS
-================================ */
-
-.dark {
-    background: rgba(0,0,0,0.5);
-}
-
-.about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.about-robot {
-    min-height: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(0,255,102,0.35);
-    background:
-        radial-gradient(circle, rgba(0,255,102,0.13), transparent 60%),
-        #020503;
-}
-
-.about-robot svg {
-    width: min(360px,80%);
-    filter:
-        drop-shadow(0 0 10px var(--green))
-        drop-shadow(0 0 35px rgba(0,255,102,0.6));
-    animation: flotar 3s infinite;
-}
-
-.about-text h2 {
-    font-size: clamp(32px,4vw,50px);
-}
-
-.about-text h2 span {
-    color: var(--green);
-}
-
-.about-text p {
-    color: var(--gray);
-    margin-top: 20px;
-    line-height: 1.8;
-}
-
-.check {
-    margin-top: 25px;
-}
-
-.check div {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.check b {
-    color: var(--green);
-    margin-right: 10px;
-}
-
-/* ================================
-   CONTACTO
-================================ */
-
-.contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-.info,
-.form-box {
-    padding: 35px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0,255,102,0.3);
-}
-
-.info h3 {
-    color: var(--green);
-    font-size: 25px;
-}
-
-.info p {
-    color: var(--gray);
-    margin-top: 15px;
-    line-height: 1.8;
-}
-
-.info-item {
-    margin-top: 18px;
-    padding: 15px;
-    border-left: 3px solid var(--green);
-    background: rgba(255,255,255,0.03);
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    background: #061009;
-    border: 1px solid rgba(0,255,102,0.3);
-    color: white;
-    outline: none;
-}
-
-textarea {
-    height: 140px;
-}
-
-.send {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    background: var(--green);
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* ================================
-   FOOTER
-================================ */
-
-footer {
-    padding: 50px 8% 20px;
-    background: #000;
-    border-top: 1px solid rgba(0,255,102,0.3);
-    text-align: center;
-}
-
-footer h3 {
-    color: var(--green);
-}
-
-footer p {
-    color: #888;
-    margin-top: 15px;
-    font-size: 13px;
-}
-
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media(max-width:900px) {
-
-    nav {
-        display: none;
-    }
-
-    .hero,
-    .about,
-    .contact {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        text-align: center;
-    }
-
-    .buttons {
-        justify-content: center;
-    }
-
-    .services {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-}
-
-</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
-<div class="overlay"></div>
+    <!-- =========================
+         MENÚ
+    ========================== -->
 
-<!-- INTRO -->
-<div id="intro">
+    <header class="header">
 
-    <div class="intro-box">
+        <div class="container nav-container">
 
-        <div class="robot-intro">
-
-            <svg viewBox="0 0 500 500">
-
-                <!-- ANTENA -->
-                <line x1="250" y1="65" x2="250" y2="115"
-                      stroke="#00ff66" stroke-width="10"/>
-
-                <circle cx="250" cy="50" r="15" fill="#00ff66"/>
-
-                <!-- CABEZA -->
-                <rect x="120" y="115" width="260" height="185"
-                      rx="35"
-                      fill="#07110b"
-                      stroke="#00ff66"
-                      stroke-width="10"/>
-
-                <!-- OJOS -->
-                <rect x="165" y="165" width="55" height="38"
-                      rx="8" fill="#00ff66"/>
-
-                <rect x="280" y="165" width="55" height="38"
-                      rx="8" fill="#00ff66"/>
-
-                <!-- BOCA -->
-                <rect x="185" y="240" width="130" height="25"
-                      rx="7"
-                      fill="none"
-                      stroke="#00ff66"
-                      stroke-width="6"/>
-
-                <!-- OREJAS -->
-                <rect x="90" y="165" width="30" height="85"
-                      rx="8"
-                      fill="#07110b"
-                      stroke="#00ff66"
-                      stroke-width="8"/>
-
-                <rect x="380" y="165" width="30" height="85"
-                      rx="8"
-                      fill="#07110b"
-                      stroke="#00ff66"
-                      stroke-width="8"/>
-
-                <!-- CUELLO -->
-                <rect x="210" y="300" width="80" height="40"
-                      fill="#07110b"
-                      stroke="#00ff66"
-                      stroke-width="8"/>
-
-                <!-- CUERPO -->
-                <path
-                    d="M130 480
-                       L130 390
-                       Q130 350 170 350
-                       L330 350
-                       Q370 350 370 390
-                       L370 480 Z"
-                    fill="#07110b"
-                    stroke="#00ff66"
-                    stroke-width="10"/>
-
-                <!-- PANEL -->
-                <rect x="190" y="390" width="120" height="55"
-                      rx="8"
-                      fill="none"
-                      stroke="#00ff66"
-                      stroke-width="6"/>
-
-                <circle cx="220" cy="418" r="8" fill="#00ff66"/>
-                <circle cx="250" cy="418" r="8" fill="#00ff66"/>
-                <circle cx="280" cy="418" r="8" fill="#00ff66"/>
-
-            </svg>
-
-        </div>
-
-        <h1>ROBOT SECURITY</h1>
-        <p>INTELIGENCIA • VIGILANCIA • TECNOLOGÍA</p>
-
-        <div class="loading">
-            <div class="loading-bar"></div>
-        </div>
-
-        <div class="loading-text" id="loadingText">
-            INICIANDO SISTEMA...
-        </div>
-
-    </div>
-
-</div>
-
-<!-- HEADER -->
-<header>
-
-    <div class="logo">
-
-        <div class="logo-icon">
-
-            <svg viewBox="0 0 100 100">
-
-                <rect x="20" y="25" width="60" height="50"
-                      rx="10"
-                      fill="none"
-                      stroke="#00ff66"
-                      stroke-width="6"/>
-
-                <circle cx="38" cy="48" r="7" fill="#00ff66"/>
-                <circle cx="62" cy="48" r="7" fill="#00ff66"/>
-
-                <line x1="50" y1="25" x2="50" y2="10"
-                      stroke="#00ff66"
-                      stroke-width="6"/>
-
-                <circle cx="50" cy="8" r="5" fill="#00ff66"/>
-
-            </svg>
-
-        </div>
-
-        <div class="logo-text">
-            <strong>ROBOT SECURITY</strong>
-            <span>SEGURIDAD INTELIGENTE</span>
-        </div>
-
-    </div>
-
-    <nav>
-        <a href="#inicio">INICIO</a>
-        <a href="#servicios">SERVICIOS</a>
-        <a href="#nosotros">NOSOTROS</a>
-        <a href="#contacto">CONTACTO</a>
-    </nav>
-
-</header>
-
-<!-- HERO -->
-<section class="hero" id="inicio">
-
-    <div>
-
-        <div class="badge">
-            SEGURIDAD DEL FUTURO
-        </div>
-
-        <h1>
-            TECNOLOGÍA QUE<br>
-            <span>PROTEGE</span>
-        </h1>
-
-        <p>
-            Robot Security combina vigilancia, control y tecnología
-            para ofrecer soluciones modernas de seguridad.
-        </p>
-
-        <div class="buttons">
-
-            <a href="#servicios" class="btn btn-main">
-                VER SERVICIOS
+            <a href="#inicio" class="logo">
+                <img src="imagenes/logo.png" alt="Zárate Security">
             </a>
 
-            <a href="#contacto" class="btn btn-second">
-                CONTACTAR
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="#inicio" class="active">INICIO</a>
+
+                <a href="#nosotros">NOSOTROS</a>
+
+                <a href="#servicios">SERVICIOS</a>
+
+                <a href="#equipos">EQUIPOS</a>
+
+                <a href="#protocolos">PROTOCOLOS</a>
+
+                <a href="#galeria">GALERÍA</a>
+
+                <a href="#contacto">CONTACTO</a>
+
+            </nav>
+
+            <a href="#contacto" class="btn-contacto">
+                ☎ CONTÁCTANOS
             </a>
 
-        </div>
-
-    </div>
-
-    <div class="robot-area">
-
-        <div class="robot-circle">
-
-            <div class="robot-main">
-
-                <svg viewBox="0 0 500 500">
-
-                    <line x1="250" y1="65" x2="250" y2="115"
-                          stroke="#00ff66" stroke-width="10"/>
-
-                    <circle cx="250" cy="50" r="15"
-                            fill="#00ff66"/>
-
-                    <rect x="120" y="115"
-                          width="260"
-                          height="185"
-                          rx="35"
-                          fill="#07110b"
-                          stroke="#00ff66"
-                          stroke-width="10"/>
-
-                    <rect x="165" y="165"
-                          width="55"
-                          height="38"
-                          rx="8"
-                          fill="#00ff66"/>
-
-                    <rect x="280" y="165"
-                          width="55"
-                          height="38"
-                          rx="8"
-                          fill="#00ff66"/>
-
-                    <rect x="185" y="240"
-                          width="130"
-                          height="25"
-                          rx="7"
-                          fill="none"
-                          stroke="#00ff66"
-                          stroke-width="6"/>
-
-                    <rect x="90" y="165"
-                          width="30"
-                          height="85"
-                          rx="8"
-                          fill="#07110b"
-                          stroke="#00ff66"
-                          stroke-width="8"/>
-
-                    <rect x="380" y="165"
-                          width="30"
-                          height="85"
-                          rx="8"
-                          fill="#07110b"
-                          stroke="#00ff66"
-                          stroke-width="8"/>
-
-                    <rect x="210" y="300"
-                          width="80"
-                          height="40"
-                          fill="#07110b"
-                          stroke="#00ff66"
-                          stroke-width="8"/>
-
-                    <path
-                        d="M130 480
-                           L130 390
-                           Q130 350 170 350
-                           L330 350
-                           Q370 350 370 390
-                           L370 480 Z"
-                        fill="#07110b"
-                        stroke="#00ff66"
-                        stroke-width="10"/>
-
-                    <rect x="190" y="390"
-                          width="120"
-                          height="55"
-                          rx="8"
-                          fill="none"
-                          stroke="#00ff66"
-                          stroke-width="6"/>
-
-                    <circle cx="220" cy="418" r="8"
-                            fill="#00ff66"/>
-
-                    <circle cx="250" cy="418" r="8"
-                            fill="#00ff66"/>
-
-                    <circle cx="280" cy="418" r="8"
-                            fill="#00ff66"/>
-
-                </svg>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ESTADISTICAS -->
-<section class="stats">
-
-    <div class="stat">
-        <strong>24/7</strong>
-        <span>Protección</span>
-    </div>
-
-    <div class="stat">
-        <strong>AI</strong>
-        <span>Tecnología</span>
-    </div>
-
-    <div class="stat">
-        <strong>100%</strong>
-        <span>Control</span>
-    </div>
-
-    <div class="stat">
-        <strong>⚡</strong>
-        <span>Respuesta</span>
-    </div>
-
-</section>
-
-<!-- SERVICIOS -->
-<section class="section" id="servicios">
-
-    <div class="section-title">
-        <small>SERVICIOS</small>
-        <h2>SEGURIDAD INTELIGENTE</h2>
-        <p>
-            Soluciones tecnológicas para diferentes necesidades.
-        </p>
-    </div>
-
-    <div class="services">
-
-        <div class="card">
-            <div class="icon">🤖</div>
-            <h3>Vigilancia Inteligente</h3>
-            <p>
-                Supervisión moderna y control de áreas.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">📹</div>
-            <h3>Monitoreo CCTV</h3>
-            <p>
-                Observación mediante sistemas de videovigilancia.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🔐</div>
-            <h3>Control de Acceso</h3>
-            <p>
-                Gestión y verificación de ingresos.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚨</div>
-            <h3>Alertas</h3>
-            <p>
-                Control de novedades y comunicación.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛰️</div>
-            <h3>Supervisión</h3>
-            <p>
-                Seguimiento de zonas estratégicas.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>Protección</h3>
-            <p>
-                Seguridad preventiva y organizada.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- NOSOTROS -->
-<section class="section dark" id="nosotros">
-
-    <div class="about">
-
-        <div class="about-robot">
-
-            <svg viewBox="0 0 500 500">
-
-                <line x1="250" y1="65" x2="250" y2="115"
-                      stroke="#00ff66" stroke-width="10"/>
-
-                <circle cx="250" cy="50" r="15"
-                        fill="#00ff66"/>
-
-                <rect x="120" y="115"
-                      width="260"
-                      height="185"
-                      rx="35"
-                      fill="#07110b"
-                      stroke="#00ff66"
-                      stroke-width="10"/>
-
-                <rect x="165" y="165"
-                      width="55"
-                      height="38"
-                      rx="8"
-                      fill="#00ff66"/>
-
-                <rect x="280" y="165"
-                      width="55"
-                      height="38"
-                      rx="8"
-                      fill="#00ff66"/>
-
-                <path
-                    d="M130 480
-                       L130 390
-                       Q130 350 170 350
-                       L330 350
-                       Q370 350 370 390
-                       L370 480 Z"
-                    fill="#07110b"
-                    stroke="#00ff66"
-                    stroke-width="10"/>
-
-            </svg>
-
-        </div>
-
-        <div class="about-text">
-
-            <small style="color:#00ff66;letter-spacing:3px;">
-                NOSOTROS
-            </small>
-
-            <h2>
-                SEGURIDAD CON
-                <span>TECNOLOGÍA</span>
-            </h2>
-
-            <p>
-                Utilizamos una visión moderna orientada al control,
-                prevención y tecnología.
-            </p>
-
-            <div class="check">
-                <div><b>✓</b> Tecnología moderna</div>
-                <div><b>✓</b> Supervisión</div>
-                <div><b>✓</b> Prevención</div>
-                <div><b>✓</b> Control organizado</div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CONTACTO -->
-<section class="section" id="contacto">
-
-    <div class="section-title">
-        <small>CONTACTO</small>
-        <h2>HABLEMOS</h2>
-        <p>
-            Solicita información sobre nuestros servicios.
-        </p>
-    </div>
-
-    <div class="contact">
-
-        <div class="info">
-
-            <h3>ROBOT SECURITY</h3>
-
-            <p>
-                Estamos preparados para brindarte información.
-            </p>
-
-            <div class="info-item">
-                📞 Teléfono +593983498360
-            </div>
-
-            <div class="info-item">
-                ✉️ Correo próximamente
-            </div>
-
-            <div class="info-item">
-                📍 Ecuador
-            </div>
-
-        </div>
-
-        <form class="form-box" id="contactForm">
-
-            <input type="text"
-                   placeholder="Nombre completo"
-                   required>
-
-            <input type="email"
-                   placeholder="Correo electrónico"
-                   required>
-
-            <input type="tel"
-                   placeholder="Teléfono"
-                   required>
-
-            <select required>
-
-                <option value="">
-                    Seleccione un servicio
-                </option>
-
-                <option>Vigilancia</option>
-                <option>Monitoreo CCTV</option>
-                <option>Control de Accesos</option>
-
-            </select>
-
-            <textarea
-                placeholder="Escriba su mensaje"
-                required></textarea>
-
-            <button class="send" type="submit">
-                ENVIAR SOLICITUD
+            <button class="menu-btn" id="menuBtn">
+                ☰
             </button>
 
-        </form>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="inicio" class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-container">
+
+            <div class="hero-text">
+
+                <span class="subtitle">
+                    PROTEGEMOS LO QUE MÁS IMPORTA
+                </span>
+
+                <h1>
+                    SEGURIDAD
+                    <strong>PROFESIONAL</strong>
+                </h1>
+
+                <p>
+                    En <strong>Zárate Security</strong> brindamos soluciones
+                    integrales en seguridad residencial, corporativa y VIP,
+                    combinando personal capacitado, tecnología avanzada
+                    y protocolos profesionales.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>PROTECCIÓN 24/7</strong>
+                            <span>Monitoreo constante</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ♙
+                        </div>
+
+                        <div>
+                            <strong>PERSONAL CALIFICADO</strong>
+                            <span>Capacitación continua</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            ◉
+                        </div>
+
+                        <div>
+                            <strong>TECNOLOGÍA AVANZADA</strong>
+                            <span>Equipos modernos</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-buttons">
+
+                    <a href="#servicios" class="btn-primary">
+                        NUESTROS SERVICIOS →
+                    </a>
+
+                    <a href="#contacto" class="btn-secondary">
+                        VER INFORMACIÓN
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOTO -->
+
+            <div class="hero-profile">
+
+                <div class="profile-background"></div>
+
+                <div class="profile-card" id="profileCard">
+
+                    <div class="profile-front">
+
+                        <img
+                            src="imagenes/perfil.png"
+                            alt="Zárate Security">
+
+                        <div class="photo-info">
+
+                            <span>DIRECTOR</span>
+
+                            <strong>ZÁRATE SECURITY</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-back">
+
+                        <div class="back-logo">
+                            ZS
+                        </div>
+
+                        <span>ZÁRATE SECURITY</span>
+
+                        <h2>
+                            PROTECCIÓN
+                            <strong>PROFESIONAL</strong>
+                        </h2>
+
+                        <p>
+                            Seguridad, confianza y protección
+                            para nuestros clientes.
+                        </p>
+
+                        <div class="profile-stats">
+
+                            <div>
+                                <strong>24/7</strong>
+                                <span>Disponibilidad</span>
+                            </div>
+
+                            <div>
+                                <strong>VIP</strong>
+                                <span>Protección</span>
+                            </div>
+
+                            <div>
+                                <strong>ZS</strong>
+                                <span>Seguridad</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#contacto" class="btn-primary">
+                            CONTACTARNOS →
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <p class="flip-text">
+                    ↻ Haz clic sobre la imagen
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         NOSOTROS
+    ========================== -->
+
+    <section id="nosotros" class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>QUIÉNES SOMOS</span>
+
+                <h2>
+                    SEGURIDAD CON
+                    <strong>PROFESIONALISMO.</strong>
+                </h2>
+
+                <p>
+                    En Zárate Security trabajamos para ofrecer
+                    soluciones de seguridad confiables, modernas
+                    y adaptadas a cada necesidad.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <span>01</span>
+
+                    <h3>PREVENCIÓN</h3>
+
+                    <p>
+                        Identificación de riesgos y aplicación
+                        de medidas preventivas.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <span>02</span>
+
+                    <h3>CONTROL</h3>
+
+                    <p>
+                        Procedimientos profesionales para
+                        accesos, visitantes y áreas sensibles.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <span>03</span>
+
+                    <h3>RESPUESTA</h3>
+
+                    <p>
+                        Comunicación y actuación organizada
+                        ante situaciones de riesgo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICIOS
+    ========================== -->
+
+    <section id="servicios" class="section dark">
+
+        <div class="container">
+
+            <div class="section-title center">
+
+                <span>NUESTROS SERVICIOS</span>
+
+                <h2>
+                    SOLUCIONES DE
+                    <strong>SEGURIDAD</strong>
+                </h2>
+
+                <p>
+                    Protección profesional para cada necesidad.
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🏠
+                    </div>
+
+                    <h3>
+                        SEGURIDAD RESIDENCIAL
+                    </h3>
+
+                    <p>
+                        Protección para conjuntos residenciales,
+                        urbanizaciones y comunidades.
+                    </p>
+
+                    <button onclick="mostrarServicio('residencial')">
+                        VER MÁS →
+                    </button>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        🏢
+                    </div>
+
+                    <h3>
+                        SEGURIDAD CORPORATIVA
+                    </h3>
+
+                    <p>
+                        Seguridad para empresas, oficinas,
+                        industrias y comercios.
+                    </p>
+
+                    <button onclick="mostrarServicio('corporativa')">
+                        VER MÁS →
+                    </button>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        SEGURIDAD VIP
+                    </h3>
+
+                    <p>
+                        Protección personalizada para ejecutivos,
+                        empresarios y personas de alto perfil.
+                    </p>
+
+                    <button onclick="mostrarServicio('vip')">
+                        VER MÁS →
+                    </button>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        📹
+                    </div>
+
+                    <h3>
+                        MONITOREO Y TECNOLOGÍA
+                    </h3>
+
+                    <p>
+                        CCTV, control de accesos y tecnología
+                        aplicada a la seguridad.
+                    </p>
+
+                    <button onclick="mostrarServicio('tecnologia')">
+                        VER MÁS →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EQUIPOS
+    ========================== -->
+
+    <section id="equipos" class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>TECNOLOGÍA</span>
+
+                <h2>
+                    EQUIPOS PARA UNA
+                    <strong>MEJOR PROTECCIÓN.</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="equipment-grid">
+
+                <div class="equipment">
+                    <span>📹</span>
+                    <h3>CCTV</h3>
+                    <p>
+                        Sistemas de videovigilancia y monitoreo.
+                    </p>
+                </div>
+
+
+                <div class="equipment">
+                    <span>🔐</span>
+                    <h3>CONTROL DE ACCESO</h3>
+                    <p>
+                        Control y registro de ingresos y salidas.
+                    </p>
+                </div>
+
+
+                <div class="equipment">
+                    <span>📡</span>
+                    <h3>COMUNICACIÓN</h3>
+                    <p>
+                        Comunicación operativa para una respuesta rápida.
+                    </p>
+                </div>
+
+
+                <div class="equipment">
+                    <span>🛡️</span>
+                    <h3>MONITOREO</h3>
+                    <p>
+                        Supervisión permanente de puntos estratégicos.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROTOCOLOS
+    ========================== -->
+
+    <section id="protocolos" class="section dark">
+
+        <div class="container">
+
+            <div class="section-title center">
+
+                <span>PROCEDIMIENTOS</span>
+
+                <h2>
+                    NUESTROS
+                    <strong>PROTOCOLOS</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="protocols">
+
+                <div class="protocol">
+
+                    <span>01</span>
+
+                    <div>
+
+                        <h3>
+                            CONTROL DE ACCESOS
+                        </h3>
+
+                        <p>
+                            Validación de visitantes, proveedores,
+                            vehículos y autorizaciones.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="protocol">
+
+                    <span>02</span>
+
+                    <div>
+
+                        <h3>
+                            RONDAS PREVENTIVAS
+                        </h3>
+
+                        <p>
+                            Inspección periódica de perímetros,
+                            áreas comunes y puntos sensibles.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="protocol">
+
+                    <span>03</span>
+
+                    <div>
+
+                        <h3>
+                            REPORTE DE NOVEDADES
+                        </h3>
+
+                        <p>
+                            Registro y comunicación de cualquier
+                            situación detectada.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="protocol">
+
+                    <span>04</span>
+
+                    <div>
+
+                        <h3>
+                            RESPUESTA COORDINADA
+                        </h3>
+
+                        <p>
+                            Aplicación de procedimientos ante
+                            situaciones de emergencia.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERÍA
+    ========================== -->
+
+    <section id="galeria" class="section">
+
+        <div class="container">
+
+            <div class="section-title center">
+
+                <span>ZÁRATE SECURITY</span>
+
+                <h2>
+                    NUESTRA
+                    <strong>IMAGEN</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="gallery">
+
+                <div class="gallery-item">
+                    SEGURIDAD
+                </div>
+
+                <div class="gallery-item">
+                    PREVENCIÓN
+                </div>
+
+                <div class="gallery-item">
+                    TECNOLOGÍA
+                </div>
+
+                <div class="gallery-item">
+                    PROTECCIÓN
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACTO
+    ========================== -->
+
+    <section id="contacto" class="section contact-section">
+
+        <div class="container contact-grid">
+
+            <div class="contact-text">
+
+                <span class="subtitle">
+                    CONTACTO
+                </span>
+
+                <h2>
+                    HABLEMOS DE TU
+                    <strong>SEGURIDAD.</strong>
+                </h2>
+
+                <p>
+                    Estamos preparados para conocer tus necesidades
+                    y ofrecer una solución profesional.
+                </p>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <input
+                    type="text"
+                    placeholder="Nombre"
+                    required>
+
+                <input
+                    type="email"
+                    placeholder="Correo electrónico"
+                    required>
+
+                <select>
+
+                    <option>
+                        Seguridad Residencial
+                    </option>
+
+                    <option>
+                        Seguridad Corporativa
+                    </option>
+
+                    <option>
+                        Seguridad VIP
+                    </option>
+
+                    <option>
+                        Monitoreo y Tecnología
+                    </option>
+
+                </select>
+
+
+                <textarea
+                    rows="5"
+                    placeholder="¿Cómo podemos ayudarte?"
+                    required></textarea>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    ENVIAR SOLICITUD →
+
+                </button>
+
+                <p id="mensaje"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container footer-container">
+
+            <img
+                src="imagenes/logo.png"
+                alt="Zárate Security">
+
+            <p>
+                SEGURIDAD • CONFIANZA • PROTECCIÓN
+            </p>
+
+            <span>
+                © 2026 Zárate Security
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- MODAL -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-content">
+
+            <button id="cerrarModal">
+                ×
+            </button>
+
+            <span>ZÁRATE SECURITY</span>
+
+            <h2 id="modalTitulo">
+                Servicio
+            </h2>
+
+            <p id="modalDescripcion">
+            </p>
+
+            <ul id="modalLista">
+            </ul>
+
+            <a href="#contacto" class="btn-primary">
+                SOLICITAR INFORMACIÓN →
+            </a>
+
+        </div>
 
     </div>
 
-</section>
 
-<!-- FOOTER -->
-<footer>
-
-    <h3>ROBOT SECURITY</h3>
-
-    <p>
-        Inteligencia • Tecnología • Seguridad
-    </p>
-
-    <p>
-        © 2026 ROBOT SECURITY
-    </p>
-
-</footer>
-
-<script>
-
-/* MATRIX */
-
-const canvas =
-    document.getElementById("matrix");
-
-const ctx =
-    canvas.getContext("2d");
-
-let fontSize = 16;
-let columns;
-let drops;
-
-const chars =
-"01ABCDEFGHIJKLMNOPQRSTUVWXYZROBOTSECURITY";
-
-function resizeMatrix() {
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    columns =
-        Math.floor(
-            canvas.width / fontSize
-        );
-
-    drops =
-        Array(columns).fill(1);
-}
-
-resizeMatrix();
-
-function drawMatrix() {
-
-    ctx.fillStyle =
-        "rgba(0,0,0,0.08)";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    ctx.fillStyle =
-        "#00ff66";
-
-    ctx.font =
-        fontSize + "px monospace";
-
-    for (
-        let i = 0;
-        i < drops.length;
-        i++
-    ) {
-
-        const char =
-            chars.charAt(
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            );
-
-        ctx.fillText(
-            char,
-            i * fontSize,
-            drops[i] * fontSize
-        );
-
-        if (
-            drops[i] * fontSize >
-            canvas.height &&
-            Math.random() > 0.975
-        ) {
-
-            drops[i] = 0;
-
-        }
-
-        drops[i]++;
-
-    }
-
-}
-
-setInterval(
-    drawMatrix,
-    35
-);
-
-window.addEventListener(
-    "resize",
-    resizeMatrix
-);
-
-
-/* MENSAJES DE CARGA */
-
-const messages = [
-
-    "INICIANDO SISTEMA...",
-
-    "CARGANDO INTELIGENCIA...",
-
-    "ACTIVANDO PROTOCOLOS...",
-
-    "VERIFICANDO SEGURIDAD...",
-
-    "SISTEMA LISTO..."
-
-];
-
-let index = 0;
-
-const loadingText =
-    document.getElementById(
-        "loadingText"
-    );
-
-const interval =
-setInterval(function() {
-
-    index++;
-
-    if (index < messages.length) {
-
-        loadingText.textContent =
-            messages[index];
-
-    }
-
-}, 900);
-
-
-/* OCULTAR INTRO */
-
-setTimeout(function() {
-
-    clearInterval(interval);
-
-    document
-        .getElementById("intro")
-        .classList
-        .add("ocultar");
-
-}, 5200);
-
-
-/* FORMULARIO */
-
-document
-    .getElementById("contactForm")
-    .addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-            alert(
-                "Solicitud enviada correctamente."
-            );
-
-            this.reset();
-
-        }
-    );
-
-</script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>

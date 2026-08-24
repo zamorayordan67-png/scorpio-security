@@ -1,577 +1,224 @@
-document.body.classList.add("loading");
+/* =====================================================
+   ZÁRATE SECURITY
+   JAVASCRIPT
+===================================================== */
 
 
-/* ==========================================
-   LOADER
-========================================== */
+/* =====================================================
+   MENÚ CELULAR
+===================================================== */
 
-const loader = document.getElementById("loader");
+const menuBtn = document.getElementById("menuBtn");
 
-const loadingText = document.getElementById("loadingText");
-
-const loadingMessages = [
-    "INICIALIZANDO SISTEMA DE SEGURIDAD...",
-    "CARGANDO PROTOCOLOS...",
-    "VERIFICANDO CONEXIÓN...",
-    "ACTIVANDO MONITOREO...",
-    "SISTEMA SCORPIO ONLINE..."
-];
-
-let loadingIndex = 0;
-
-const loadingInterval = setInterval(() => {
-
-    loadingIndex++;
-
-    if (loadingIndex >= loadingMessages.length) {
-        loadingIndex = 0;
-    }
-
-    loadingText.textContent = loadingMessages[loadingIndex];
-
-}, 700);
+const navMenu = document.getElementById("navMenu");
 
 
-window.addEventListener("load", () => {
+menuBtn.addEventListener("click", function () {
 
-    setTimeout(() => {
-
-        clearInterval(loadingInterval);
-
-        loadingText.textContent = "SISTEMA LISTO.";
-
-    }, 2500);
-
-
-    setTimeout(() => {
-
-        loader.classList.add("hide");
-
-        document.body.classList.remove("loading");
-
-    }, 3500);
+    navMenu.classList.toggle("open");
 
 });
 
 
-/* ==========================================
-   MATRIX CANVAS LOADER
-========================================== */
+/* Cerrar menú al seleccionar una sección */
 
-const matrixCanvas = document.getElementById("matrixCanvas");
-
-const matrixContext = matrixCanvas.getContext("2d");
-
-
-function resizeMatrixLoader() {
-
-    matrixCanvas.width = window.innerWidth;
-
-    matrixCanvas.height = window.innerHeight;
-
-}
-
-
-resizeMatrixLoader();
-
-
-const matrixCharacters =
-    "SCORPIOSECURITY0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ<>[]{}";
-
-
-const loaderFontSize = 16;
-
-
-let loaderColumns =
-    Math.floor(matrixCanvas.width / loaderFontSize);
-
-
-let loaderDrops =
-    Array(loaderColumns).fill(1);
-
-
-function drawLoaderMatrix() {
-
-    matrixContext.fillStyle = "rgba(1, 3, 2, 0.08)";
-
-    matrixContext.fillRect(
-        0,
-        0,
-        matrixCanvas.width,
-        matrixCanvas.height
-    );
-
-
-    matrixContext.fillStyle = "#00ff88";
-
-    matrixContext.font =
-        loaderFontSize + "px monospace";
-
-
-    for (
-        let i = 0;
-        i < loaderDrops.length;
-        i++
-    ) {
-
-        const character =
-            matrixCharacters[
-                Math.floor(
-                    Math.random() *
-                    matrixCharacters.length
-                )
-            ];
-
-
-        matrixContext.fillText(
-            character,
-            i * loaderFontSize,
-            loaderDrops[i] * loaderFontSize
-        );
-
-
-        if (
-            loaderDrops[i] *
-            loaderFontSize >
-            matrixCanvas.height &&
-            Math.random() > 0.975
-        ) {
-
-            loaderDrops[i] = 0;
-
-        }
-
-
-        loaderDrops[i]++;
-
-    }
-
-}
-
-
-setInterval(drawLoaderMatrix, 45);
-
-
-/* ==========================================
-   MATRIX BACKGROUND
-========================================== */
-
-const backgroundCanvas =
-    document.getElementById("matrixBackground");
-
-
-const backgroundContext =
-    backgroundCanvas.getContext("2d");
-
-
-function resizeBackground() {
-
-    backgroundCanvas.width =
-        window.innerWidth;
-
-
-    backgroundCanvas.height =
-        window.innerHeight;
-
-}
-
-
-resizeBackground();
-
-
-const backgroundFontSize = 14;
-
-
-let backgroundColumns =
-    Math.floor(
-        backgroundCanvas.width /
-        backgroundFontSize
-    );
-
-
-let backgroundDrops =
-    Array(backgroundColumns).fill(1);
-
-
-function drawBackgroundMatrix() {
-
-    backgroundContext.fillStyle =
-        "rgba(2, 6, 4, 0.12)";
-
-
-    backgroundContext.fillRect(
-        0,
-        0,
-        backgroundCanvas.width,
-        backgroundCanvas.height
-    );
-
-
-    backgroundContext.fillStyle =
-        "#00ff88";
-
-
-    backgroundContext.font =
-        backgroundFontSize + "px monospace";
-
-
-    for (
-        let i = 0;
-        i < backgroundDrops.length;
-        i++
-    ) {
-
-        const character =
-            matrixCharacters[
-                Math.floor(
-                    Math.random() *
-                    matrixCharacters.length
-                )
-            ];
-
-
-        backgroundContext.fillText(
-            character,
-            i * backgroundFontSize,
-            backgroundDrops[i] *
-            backgroundFontSize
-        );
-
-
-        if (
-            backgroundDrops[i] *
-            backgroundFontSize >
-            backgroundCanvas.height &&
-            Math.random() > 0.98
-        ) {
-
-            backgroundDrops[i] = 0;
-
-        }
-
-
-        backgroundDrops[i]++;
-
-    }
-
-}
-
-
-setInterval(drawBackgroundMatrix, 70);
-
-
-/* ==========================================
-   RESIZE
-========================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        resizeMatrixLoader();
-
-        resizeBackground();
-
-
-        loaderColumns =
-            Math.floor(
-                matrixCanvas.width /
-                loaderFontSize
-            );
-
-
-        loaderDrops =
-            Array(loaderColumns).fill(1);
-
-
-        backgroundColumns =
-            Math.floor(
-                backgroundCanvas.width /
-                backgroundFontSize
-            );
-
-
-        backgroundDrops =
-            Array(backgroundColumns).fill(1);
-
-    }
+const enlaces = document.querySelectorAll(
+    ".nav-menu a"
 );
 
 
-/* ==========================================
-   MENÚ MÓVIL
-========================================== */
+enlaces.forEach(function (enlace) {
 
-const menuButton =
-    document.getElementById("menuButton");
+    enlace.addEventListener(
+        "click",
+        function () {
+
+            navMenu.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+});
 
 
-const navigation =
-    document.getElementById("navigation");
+
+/* =====================================================
+   TARJETA 3D
+===================================================== */
+
+const profileCard =
+    document.getElementById(
+        "profileCard"
+    );
 
 
-menuButton.addEventListener(
+profileCard.addEventListener(
     "click",
-    () => {
+    function () {
 
-        navigation.classList.toggle("open");
+        profileCard.classList.toggle(
+            "flipped"
+        );
 
     }
 );
 
 
-document.querySelectorAll(".nav-link")
-.forEach(link => {
 
-    link.addEventListener(
-        "click",
-        () => {
+/* GIRO AUTOMÁTICO */
 
-            navigation.classList.remove("open");
+let giroAutomatico =
+    setInterval(function () {
 
-        }
+        profileCard.classList.toggle(
+            "flipped"
+        );
+
+    }, 7000);
+
+
+
+/* =====================================================
+   SERVICIOS
+===================================================== */
+
+const modal =
+    document.getElementById(
+        "modal"
     );
 
-});
 
-
-/* ==========================================
-   FAQ
-========================================== */
-
-const faqItems =
-    document.querySelectorAll(".faq-item");
-
-
-faqItems.forEach(item => {
-
-    const button =
-        item.querySelector("button");
-
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            const isActive =
-                item.classList.contains("active");
-
-
-            faqItems.forEach(otherItem => {
-
-                otherItem.classList.remove("active");
-
-            });
-
-
-            if (!isActive) {
-
-                item.classList.add("active");
-
-            }
-
-        }
+const modalTitulo =
+    document.getElementById(
+        "modalTitulo"
     );
 
-});
+
+const modalDescripcion =
+    document.getElementById(
+        "modalDescripcion"
+    );
 
 
-/* ==========================================
-   DATOS DE SERVICIOS
-========================================== */
+const modalLista =
+    document.getElementById(
+        "modalLista"
+    );
 
-const services = {
+
+const cerrarModal =
+    document.getElementById(
+        "cerrarModal"
+    );
+
+
+
+const servicios = {
 
     residencial: {
 
-        icon: "fa-house-lock",
+        titulo:
+            "Seguridad Residencial",
 
-        title: "SEGURIDAD RESIDENCIAL",
+        descripcion:
+            "Protección profesional para conjuntos residenciales, urbanizaciones y comunidades.",
 
-        description:
-            "Servicio orientado a conjuntos residenciales, urbanizaciones, edificios y propiedades privadas. El objetivo es apoyar la prevención mediante control, supervisión y procedimientos organizados.",
+        puntos: [
 
-        features: [
+            "Control de accesos.",
 
-            "Control y registro de accesos",
+            "Registro de visitantes.",
 
-            "Validación de visitantes",
+            "Control de proveedores.",
 
-            "Control de proveedores",
+            "Rondas preventivas.",
 
-            "Registro y control de vehículos",
+            "Supervisión de áreas comunes.",
 
-            "Rondas preventivas",
-
-            "Supervisión de áreas comunes",
-
-            "Verificación de instalaciones",
-
-            "Reporte de novedades",
-
-            "Comunicación según protocolos establecidos"
+            "Reporte de novedades."
 
         ]
 
     },
 
 
-    empresarial: {
+    corporativa: {
 
-        icon: "fa-building-shield",
+        titulo:
+            "Seguridad Corporativa",
 
-        title: "SEGURIDAD EMPRESARIAL",
+        descripcion:
+            "Soluciones de seguridad para empresas, oficinas, industrias y comercios.",
 
-        description:
-            "Servicio diseñado para apoyar la protección y supervisión de empresas, oficinas, negocios e instalaciones corporativas mediante procedimientos de prevención y control.",
+        puntos: [
 
-        features: [
+            "Control de ingreso.",
 
-            "Control de ingreso del personal",
+            "Control de proveedores.",
 
-            "Registro de visitantes",
+            "Protección de instalaciones.",
 
-            "Control de proveedores",
+            "Supervisión operativa.",
 
-            "Supervisión de instalaciones",
+            "Reportes de seguridad.",
 
-            "Rondas preventivas",
-
-            "Control de áreas restringidas",
-
-            "Reporte de novedades",
-
-            "Apoyo en procedimientos internos",
-
-            "Comunicación operativa"
+            "Protocolos preventivos."
 
         ]
 
     },
 
 
-    cctv: {
+    vip: {
 
-        icon: "fa-video",
+        titulo:
+            "Seguridad VIP",
 
-        title: "MONITOREO CCTV",
+        descripcion:
+            "Protección personalizada para ejecutivos, empresarios y personas que requieren atención especial.",
 
-        description:
-            "La videovigilancia permite apoyar la supervisión visual de sectores estratégicos y facilitar la identificación y registro de situaciones relevantes.",
+        puntos: [
 
-        features: [
+            "Protección personalizada.",
 
-            "Supervisión visual de cámaras",
+            "Acompañamiento preventivo.",
 
-            "Monitoreo de sectores estratégicos",
+            "Evaluación de riesgos.",
 
-            "Apoyo en detección de novedades",
+            "Planificación de desplazamientos.",
 
-            "Registro de incidentes",
+            "Coordinación operativa.",
 
-            "Control visual de accesos",
-
-            "Seguimiento conforme a procedimientos",
-
-            "Comunicación de novedades",
-
-            "Apoyo para revisión de eventos registrados"
+            "Comunicación permanente."
 
         ]
 
     },
 
 
-    accesos: {
+    tecnologia: {
 
-        icon: "fa-id-card-clip",
+        titulo:
+            "Monitoreo y Tecnología",
 
-        title: "CONTROL DE ACCESOS",
+        descripcion:
+            "Tecnología aplicada a la seguridad para mejorar la capacidad de supervisión.",
 
-        description:
-            "Servicio enfocado en organizar y supervisar el ingreso y salida de personas, vehículos, visitantes y proveedores de acuerdo con los procedimientos establecidos.",
+        puntos: [
 
-        features: [
+            "Sistemas CCTV.",
 
-            "Registro de visitantes",
+            "Monitoreo.",
 
-            "Validación de autorizaciones",
+            "Control de accesos.",
 
-            "Control de proveedores",
+            "Registro de eventos.",
 
-            "Registro de vehículos",
+            "Supervisión remota.",
 
-            "Verificación de ingresos",
-
-            "Comunicación con responsables",
-
-            "Aplicación de protocolos internos",
-
-            "Reporte de novedades"
-
-        ]
-
-    },
-
-
-    rondas: {
-
-        icon: "fa-person-walking",
-
-        title: "RONDAS PREVENTIVAS",
-
-        description:
-            "Recorridos programados para verificar las diferentes áreas de una instalación, identificar situaciones inusuales y comunicar oportunamente cualquier novedad.",
-
-        features: [
-
-            "Recorridos por el perímetro",
-
-            "Supervisión de instalaciones",
-
-            "Verificación de áreas comunes",
-
-            "Control de parqueaderos",
-
-            "Revisión visual de sectores",
-
-            "Detección preventiva de novedades",
-
-            "Registro de rondas",
-
-            "Reporte de situaciones identificadas"
-
-        ]
-
-    },
-
-
-    eventos: {
-
-        icon: "fa-users-viewfinder",
-
-        title: "SEGURIDAD PARA EVENTOS",
-
-        description:
-            "Apoyo preventivo para eventos y actividades que requieren control de accesos, supervisión de espacios y organización de medidas de seguridad.",
-
-        features: [
-
-            "Control de ingreso",
-
-            "Supervisión preventiva",
-
-            "Control de áreas restringidas",
-
-            "Apoyo en organización",
-
-            "Control de accesos",
-
-            "Comunicación de novedades",
-
-            "Supervisión del desarrollo del evento",
-
-            "Coordinación conforme a requerimientos"
+            "Herramientas de comunicación."
 
         ]
 
@@ -580,129 +227,109 @@ const services = {
 };
 
 
-/* ==========================================
-   MODAL SERVICIOS
-========================================== */
 
-const modal =
-    document.getElementById("serviceModal");
+function mostrarServicio(
+    servicio
+) {
 
-
-const modalContent =
-    document.getElementById("modalContent");
+    const datos =
+        servicios[servicio];
 
 
-const closeModalButton =
-    document.getElementById("closeModal");
+    if (!datos) {
+
+        return;
+
+    }
 
 
-const serviceButtons =
-    document.querySelectorAll(".service-card");
+    modalTitulo.textContent =
+        datos.titulo;
 
 
-serviceButtons.forEach(card => {
-
-    card.addEventListener(
-        "click",
-        () => {
-
-            const serviceName =
-                card.dataset.service;
+    modalDescripcion.textContent =
+        datos.descripcion;
 
 
-            const service =
-                services[serviceName];
+    modalLista.innerHTML = "";
 
 
-            let featuresHTML = "";
+    datos.puntos.forEach(
+        function (punto) {
 
+            const li =
+                document.createElement(
+                    "li"
+                );
 
-            service.features.forEach(feature => {
+            li.textContent =
+                punto;
 
-                featuresHTML +=
-                    `<li>${feature}</li>`;
-
-            });
-
-
-            modalContent.innerHTML = `
-
-                <div class="modal-icon">
-
-                    <i class="fa-solid ${service.icon}"></i>
-
-                </div>
-
-                <h2 class="modal-title">
-                    ${service.title}
-                </h2>
-
-                <p class="modal-description">
-                    ${service.description}
-                </p>
-
-                <h3 class="modal-subtitle">
-                    COMPONENTES DEL SERVICIO
-                </h3>
-
-                <ul class="modal-list">
-
-                    ${featuresHTML}
-
-                </ul>
-
-            `;
-
-
-            modal.classList.add("active");
-
-            document.body.style.overflow = "hidden";
+            modalLista.appendChild(
+                li
+            );
 
         }
     );
 
-});
 
-
-function closeModal() {
-
-    modal.classList.remove("active");
-
-    document.body.style.overflow = "";
+    modal.classList.add(
+        "active"
+    );
 
 }
 
 
-closeModalButton.addEventListener(
+
+/* CERRAR MODAL */
+
+cerrarModal.addEventListener(
     "click",
-    closeModal
+    function () {
+
+        modal.classList.remove(
+            "active"
+        );
+
+    }
 );
 
+
+
+/* Cerrar haciendo clic afuera */
 
 modal.addEventListener(
     "click",
-    event => {
+    function (evento) {
 
-        if (event.target === modal) {
+        if (
+            evento.target === modal
+        ) {
 
-            closeModal();
+            modal.classList.remove(
+                "active"
+            );
 
         }
 
     }
 );
 
+
+
+/* Cerrar con ESC */
 
 document.addEventListener(
     "keydown",
-    event => {
+    function (evento) {
 
         if (
-            event.key === "Escape" &&
-            modal.classList.contains("active")
+            evento.key === "Escape"
         ) {
 
-            closeModal();
+            modal.classList.remove(
+                "active"
+            );
 
         }
 
@@ -710,174 +337,166 @@ document.addEventListener(
 );
 
 
-/* ==========================================
+
+/* =====================================================
    FORMULARIO
-========================================== */
+===================================================== */
 
-const contactForm =
-    document.getElementById("contactForm");
-
-
-const formStatus =
-    document.getElementById("formStatus");
-
-
-contactForm.addEventListener(
-    "submit",
-    event => {
-
-        event.preventDefault();
-
-
-        const nombre =
-            document.getElementById("nombre").value.trim();
-
-
-        const telefono =
-            document.getElementById("telefono").value.trim();
-
-
-        const correo =
-            document.getElementById("correo").value.trim();
-
-
-        const servicio =
-            document.getElementById("servicio").value;
-
-
-        const mensaje =
-            document.getElementById("mensaje").value.trim();
-
-
-        if (
-            nombre === "" ||
-            telefono === "" ||
-            correo === "" ||
-            servicio === "" ||
-            mensaje === ""
-        ) {
-
-            formStatus.textContent =
-                "ERROR: COMPLETE TODOS LOS CAMPOS.";
-
-            formStatus.style.color =
-                "#ff5c5c";
-
-            return;
-
-        }
-
-
-        const formData = {
-
-            nombre: nombre,
-
-            telefono: telefono,
-
-            correo: correo,
-
-            servicio: servicio,
-
-            mensaje: mensaje
-
-        };
-
-
-        console.log(
-            "SCORPIO SECURITY - NUEVA SOLICITUD:",
-            formData
-        );
-
-
-        formStatus.style.color =
-            "#00ff88";
-
-
-        formStatus.textContent =
-            "✓ SOLICITUD REGISTRADA CORRECTAMENTE.";
-
-
-        contactForm.reset();
-
-
-        setTimeout(() => {
-
-            formStatus.textContent = "";
-
-        }, 5000);
-
-    }
-);
-
-
-/* ==========================================
-   AÑO AUTOMÁTICO
-========================================== */
-
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-/* ==========================================
-   NAV ACTIVE AL HACER SCROLL
-========================================== */
-
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
+const formulario =
+    document.getElementById(
+        "contactForm"
     );
 
 
-const navLinks =
-    document.querySelectorAll(".nav-link");
+const mensaje =
+    document.getElementById(
+        "mensaje"
+    );
+
+
+formulario.addEventListener(
+    "submit",
+    function (evento) {
+
+        evento.preventDefault();
+
+
+        mensaje.textContent =
+            "Solicitud recibida correctamente. Pronto podremos conectar este formulario con WhatsApp o correo.";
+
+
+        formulario.reset();
+
+    }
+);
+
+
+
+/* =====================================================
+   MENÚ ACTIVO
+===================================================== */
+
+const secciones =
+    document.querySelectorAll(
+        "section[id]"
+    );
 
 
 window.addEventListener(
     "scroll",
-    () => {
+    function () {
 
-        let current = "";
-
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.offsetTop - 150;
+        let actual = "inicio";
 
 
-            const sectionHeight =
-                section.offsetHeight;
+        secciones.forEach(
+            function (seccion) {
+
+                const posicion =
+                    seccion.offsetTop;
 
 
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY <
-                sectionTop + sectionHeight
-            ) {
+                if (
+                    window.scrollY >=
+                    posicion - 180
+                ) {
 
-                current =
-                    section.getAttribute("id");
+                    actual =
+                        seccion.id;
+
+                }
 
             }
-
-        });
-
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
+        );
 
 
-            if (
-                link.getAttribute("href") ===
-                "#" + current
-            ) {
+        enlaces.forEach(
+            function (enlace) {
 
-                link.classList.add("active");
+                enlace.classList.remove(
+                    "active"
+                );
+
+
+                if (
+                    enlace.getAttribute(
+                        "href"
+                    ) ===
+                    "#" + actual
+                ) {
+
+                    enlace.classList.add(
+                        "active"
+                    );
+
+                }
 
             }
+        );
 
-        });
+    }
+);
+
+
+
+/* =====================================================
+   ANIMACIÓN DE APARICIÓN
+===================================================== */
+
+const elementos =
+    document.querySelectorAll(
+        ".about-card, .service-card, .equipment, .protocol, .gallery-item"
+    );
+
+
+const observador =
+    new IntersectionObserver(
+
+        function (entradas) {
+
+            entradas.forEach(
+                function (entrada) {
+
+                    if (
+                        entrada.isIntersecting
+                    ) {
+
+                        entrada.target.style.opacity =
+                            "1";
+
+                        entrada.target.style.transform =
+                            "translateY(0)";
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+elementos.forEach(
+    function (elemento) {
+
+        elemento.style.opacity =
+            "0";
+
+        elemento.style.transform =
+            "translateY(30px)";
+
+        elemento.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
+
+
+        observador.observe(
+            elemento
+        );
 
     }
 );
