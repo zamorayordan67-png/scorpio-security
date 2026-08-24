@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Zarate Security | Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+
+            width: 250px;
+            height: 100vh;
+
+            background: #080808;
+
+            border-right:
+                1px solid #202020;
+
+            padding: 25px 15px;
+
+        }
+
+        .logo {
+
+            width: 65px;
+            height: 65px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #050505
+                );
+
+            border:
+                2px solid #087cff;
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+        }
+
+        .empresa {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            margin-bottom: 35px;
+
+        }
+
+        .empresa h2 {
+            font-size: 18px;
+        }
+
+        .empresa p {
+
+            color: #777;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+        }
+
+        .menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+        .menu button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: transparent;
+
+            color: #aaa;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+        .menu button:hover {
+
+            background: #087cff;
+
+            color: white;
+
+        }
+
+        .cerrar {
+
+            position: absolute;
+
+            bottom: 25px;
+
+            left: 15px;
+
+            width: calc(100% - 30px);
+
+            padding: 12px;
+
+            background: #111;
+
+            border: 1px solid #333;
+
+            color: #aaa;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+        }
+
+        .cerrar:hover {
+
+            background: #a00020;
+
+            color: white;
+
+        }
+
+        .contenido {
+
+            margin-left: 250px;
+
+            padding: 40px;
+
+        }
+
+        .encabezado {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 35px;
+
+        }
+
+        .encabezado p {
+
+            color: #777;
+
+            margin-top: 8px;
+
+        }
+
+        .usuario {
+
+            background: #101010;
+
+            border: 1px solid #222;
+
+            padding: 10px 15px;
+
+            border-radius: 8px;
+
+        }
+
+        .tarjetas {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+        .tarjeta {
+
+            background: #0c0c0c;
+
+            border: 1px solid #202020;
+
+            border-radius: 14px;
+
+            padding: 25px;
+
+        }
+
+        .tarjeta span {
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+        .tarjeta h2 {
+
+            color: #087cff;
+
+            font-size: 32px;
+
+            margin-top: 15px;
+
+        }
+
+        .bienvenida {
+
+            margin-top: 30px;
+
+            background: #0c0c0c;
+
+            border: 1px solid #202020;
+
+            border-radius: 14px;
+
+            padding: 30px;
+
+        }
+
+        .bienvenida p {
+
+            color: #888;
+
+            line-height: 1.7;
+
+            margin-top: 10px;
+
+        }
+
+
+        @media(max-width: 900px) {
+
+            .tarjetas {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media(max-width: 650px) {
+
+            .sidebar {
+
+                position: relative;
+
+                width: 100%;
+
+                height: auto;
+
+            }
+
+            .contenido {
+
+                margin-left: 0;
+
+                padding: 20px;
+
+            }
+
+            .cerrar {
+
+                position: relative;
+
+                left: 0;
+
+                bottom: 0;
+
+                width: 100%;
+
+                margin-top: 20px;
+
+            }
+
+            .tarjetas {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            ZS
+        </div>
+
+        <div class="empresa">
+
+            <h2>
+                ZARATE SECURITY
+            </h2>
+
+            <p>
+                Panel Administrativo
+            </p>
+
+        </div>
+
+
+        <div class="menu">
+
+            <button>
+                🏠 Dashboard
+            </button>
+
+            <button>
+                👥 Clientes
+            </button>
+
+            <button>
+                📋 Solicitudes
+            </button>
+
+            <button>
+                ✉️ Mensajes
+            </button>
+
+            <button>
+                🛡️ Servicios
+            </button>
+
+            <button>
+                ⚙️ Configuración
+            </button>
+
+        </div>
+
+
+        <button
+            class="cerrar"
+            onclick="cerrarSesion()"
+        >
+            🚪 Cerrar sesión
+        </button>
+
+    </aside>
+
+
+    <main class="contenido">
+
+        <div class="encabezado">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Bienvenido al sistema administrativo.
+                </p>
+
+            </div>
+
+
+            <div
+                class="usuario"
+                id="usuarioActual"
+            >
+                👤 Comprobando...
+            </div>
+
+        </div>
+
+
+        <div class="tarjetas">
+
+            <div class="tarjeta">
+
+                <span>
+                    Clientes
+                </span>
+
+                <h2>
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <span>
+                    Solicitudes
+                </span>
+
+                <h2>
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <span>
+                    Mensajes
+                </span>
+
+                <h2>
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <span>
+                    Servicios
+                </span>
+
+                <h2>
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="bienvenida">
+
+            <h2>
+                🛡️ Zarate Security
+            </h2>
+
+            <p>
+                El sistema administrativo está conectado
+                al backend. Desde este panel podremos
+                administrar clientes, solicitudes, mensajes
+                y servicios.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        async function comprobarSesion() {
+
+            try {
+
+                const respuesta =
+                    await fetch(
+                        "http://localhost:3000/api/sesion",
+                        {
+                            credentials: "include"
+                        }
+                    );
+
+
+                if (!respuesta.ok) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                const datos =
+                    await respuesta.json();
+
+
+                document.getElementById(
+                    "usuarioActual"
+                ).textContent =
+                    "👤 " + datos.usuario;
+
+
+            } catch (error) {
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        }
+
+
+        async function cerrarSesion() {
+
+            try {
+
+                await fetch(
+                    "http://localhost:3000/api/logout",
+                    {
+                        method: "POST",
+                        credentials: "include"
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        comprobarSesion();
+
+    </script>
+
+
+</body>
+
+</html>
