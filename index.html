@@ -12,115 +12,309 @@
 
 <body>
 
-    <!-- MATRIX -->
+    <!-- FONDO MATRIX -->
     <canvas id="matrix"></canvas>
 
-    <!-- CONTENIDO -->
+
+    <!-- PÁGINA -->
     <div class="page">
 
-        <header>
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
             <div class="logo">
-                DRAGON <span>SECURITY</span>
+                <span>DRAGÓN</span>
+                <small>SECURITY</small>
             </div>
 
+
             <nav>
+
                 <a href="#">INICIO</a>
+
                 <a href="#">NOSOTROS</a>
+
                 <a href="#">SERVICIOS</a>
+
                 <a href="#">TECNOLOGÍA</a>
+
+                <a href="#">UBICACIÓN</a>
+
                 <a href="#">CONTACTO</a>
+
             </nav>
+
+
+            <a href="#" class="admin-button">
+                🔐 ACCESO ADMIN
+            </a>
+
         </header>
 
 
-        <section class="hero">
+        <!-- ================= HERO ================= -->
 
-            <!-- TEXTO -->
-            <div class="hero-text">
+        <main class="hero">
 
-                <p class="small-title">
+
+            <!-- TEXTO IZQUIERDO -->
+
+            <section class="hero-content">
+
+                <div class="line-title">
+                    <span></span>
                     SEGURIDAD INTELIGENTE
-                </p>
+                    <span></span>
+                </div>
+
 
                 <h1>
-                    DRAGON
+                    DRAGÓN
                     <strong>SECURITY</strong>
                 </h1>
 
+
+                <h2>
+                    PROTEGIENDO
+                    <br>
+                    LO QUE MÁS IMPORTA
+                </h2>
+
+
                 <p class="description">
-                    Protección, vigilancia y tecnología
-                    para mantener seguro lo que más importa.
+                    Tecnología, vigilancia y confianza
+                    para un mundo más seguro.
                 </p>
 
-                <button>
-                    NUESTROS SERVICIOS
-                </button>
 
-            </div>
+                <div class="buttons">
+
+                    <button class="primary-button">
+                        NUESTROS SERVICIOS
+                        <span>→</span>
+                    </button>
 
 
-            <!-- DRAGÓN -->
-            <div class="dragon-container">
+                    <button class="secondary-button">
+                        CONTACTO
+                    </button>
 
-                <div class="red-light"></div>
+                </div>
+
+
+                <!-- ESTADO DEL SISTEMA -->
+
+                <div class="system-status">
+
+                    <div class="status-title">
+                        ● SISTEMA ACTIVO
+                    </div>
+
+                    <div>
+                        CCTV ONLINE
+                        <b>●</b>
+                    </div>
+
+                    <div>
+                        ACCESOS CONTROLADOS
+                        <b>●</b>
+                    </div>
+
+                    <div>
+                        RED SEGURA
+                        <b>●</b>
+                    </div>
+
+                    <div>
+                        TODO EN ORDEN
+                        <b>●</b>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= DRAGÓN ================= -->
+
+            <section class="dragon-area">
+
+                <div class="dragon-glow"></div>
+
+                <div class="dragon-ring"></div>
+
 
                 <img
                     src="dragon.png"
-                    alt="Dragon Security"
+                    alt="Dragón Dragon Security"
                     class="dragon"
-                    id="dragon"
                 >
+
+
+                <div class="dragon-floor"></div>
+
+            </section>
+
+
+
+            <!-- FRASE DERECHA -->
+
+            <div class="right-message">
+
+                <span>“TECNOLOGÍA</span>
+                <span>VIGILANCIA</span>
+                <span>CONFIANZA</span>
+                <span>SIEMPRE”</span>
+
+                <div></div>
 
             </div>
 
-        </section>
+        </main>
 
 
-        <!-- SERVICIOS -->
+
+        <!-- ================= SERVICIOS ================= -->
 
         <section class="services">
 
-            <div class="service">
-                🛡️
-                <h3>VIGILANCIA</h3>
-                <p>24 / 7</p>
+
+            <div class="service-card">
+
+                <div class="icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    VIGILANCIA
+                </h3>
+
+                <p>
+                    24 / 7
+                </p>
+
             </div>
 
-            <div class="service">
-                📹
-                <h3>CCTV</h3>
-                <p>MONITOREO</p>
+
+
+            <div class="service-card">
+
+                <div class="icon">
+                    📹
+                </div>
+
+                <h3>
+                    CCTV
+                </h3>
+
+                <p>
+                    MONITOREO
+                </p>
+
             </div>
 
-            <div class="service">
-                🔐
-                <h3>CONTROL</h3>
-                <p>DE ACCESOS</p>
+
+
+            <div class="service-card">
+
+                <div class="icon">
+                    🔐
+                </div>
+
+                <h3>
+                    CONTROL
+                </h3>
+
+                <p>
+                    DE ACCESOS
+                </p>
+
             </div>
 
-            <div class="service">
-                🏢
-                <h3>SEGURIDAD</h3>
-                <p>RESIDENCIAL</p>
+
+
+            <div class="service-card">
+
+                <div class="icon">
+                    👥
+                </div>
+
+                <h3>
+                    SEGURIDAD
+                </h3>
+
+                <p>
+                    RESIDENCIAL
+                </p>
+
             </div>
 
-            <div class="service">
-                💻
-                <h3>TECNOLOGÍA</h3>
-                <p>SEGURIDAD</p>
+
+
+            <div class="service-card">
+
+                <div class="icon">
+                    🏢
+                </div>
+
+                <h3>
+                    SEGURIDAD
+                </h3>
+
+                <p>
+                    EMPRESARIAL
+                </p>
+
             </div>
+
+
+
+            <div class="service-card">
+
+                <div class="icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    SOPORTE
+                </h3>
+
+                <p>
+                    TÉCNICO
+                </p>
+
+            </div>
+
 
         </section>
 
 
+
+        <!-- ================= FOOTER ================= -->
+
         <footer>
-            DRAGON SECURITY © 2026
+
+            <div>
+                DRAGON SECURITY © 2026
+            </div>
+
+            <div>
+                DISCIPLINA • TECNOLOGÍA • PROTECCIÓN
+            </div>
+
         </footer>
+
 
     </div>
 
 
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>

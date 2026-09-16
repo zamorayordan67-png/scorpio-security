@@ -1,62 +1,93 @@
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background: #000;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+
+html {
+    scroll-behavior: smooth;
 }
 
 
-/* =========================
+body {
+
+    background: #000;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
    MATRIX
-========================= */
+===================================================== */
 
 #matrix {
+
     position: fixed;
-    top: 0;
-    left: 0;
+
+    inset: 0;
 
     width: 100%;
+
     height: 100%;
 
-    z-index: -2;
+    z-index: -10;
 
     background: #000;
+
 }
 
 
-/* =========================
-   FONDO
-========================= */
+/* =====================================================
+   PÁGINA
+===================================================== */
 
 .page {
+
     min-height: 100vh;
 
+    position: relative;
+
     background:
+
         radial-gradient(
             circle at 70% 50%,
-            rgba(150, 0, 0, 0.25),
+            rgba(120, 0, 0, 0.25),
             transparent 35%
         ),
 
         linear-gradient(
-            rgba(0, 0, 0, 0.60),
-            rgba(0, 0, 0, 0.85)
+            90deg,
+            rgba(0,0,0,0.90),
+            rgba(0,0,0,0.60),
+            rgba(0,0,0,0.75)
         );
+
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
-header {
+.header {
+
     height: 90px;
+
+    padding: 0 5%;
 
     display: flex;
 
@@ -64,51 +95,78 @@ header {
 
     justify-content: space-between;
 
-    padding: 0 6%;
+    background: rgba(0,0,0,0.85);
 
-    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    border-bottom:
 
-    background: rgba(0, 0, 0, 0.65);
+        1px solid
+        rgba(255,0,0,0.45);
 
-    backdrop-filter: blur(10px);
+    position: relative;
+
+    z-index: 20;
+
 }
 
 
+/* LOGO */
+
 .logo {
-    font-size: 30px;
 
-    font-weight: bold;
+    display: flex;
 
-    letter-spacing: 4px;
+    flex-direction: column;
 
-    color: white;
+    line-height: 1;
 
-    text-shadow:
-        0 0 10px red;
 }
 
 
 .logo span {
-    color: red;
 
-    display: block;
+    color: white;
 
-    font-size: 12px;
+    font-size: 29px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+
+        0 0 10px rgba(255,0,0,0.8);
+
+}
+
+
+.logo small {
+
+    color: #ff1a1a;
+
+    font-size: 10px;
 
     letter-spacing: 7px;
 
     text-align: center;
+
+    margin-top: 6px;
+
 }
 
 
+/* NAV */
+
 nav {
+
     display: flex;
 
-    gap: 35px;
+    gap: 32px;
+
 }
 
 
 nav a {
+
     color: white;
 
     text-decoration: none;
@@ -118,73 +176,149 @@ nav a {
     letter-spacing: 2px;
 
     transition: 0.3s;
+
 }
 
 
 nav a:hover {
-    color: red;
+
+    color: #ff1616;
 
     text-shadow:
+
         0 0 10px red;
+
 }
 
 
-/* =========================
+/* ADMIN */
+
+.admin-button {
+
+    text-decoration: none;
+
+    color: white;
+
+    border:
+
+        1px solid
+        #ff1616;
+
+    padding: 13px 20px;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+
+}
+
+
+.admin-button:hover {
+
+    background: #ff1616;
+
+    box-shadow:
+
+        0 0 20px red;
+
+}
+
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero {
 
-    min-height: calc(100vh - 90px);
+    min-height: 700px;
+
+    height: calc(100vh - 90px);
+
+    min-height: 650px;
+
+    position: relative;
 
     display: flex;
 
     align-items: center;
 
-    justify-content: space-between;
+    padding: 30px 5%;
 
-    padding: 40px 6%;
+    overflow: hidden;
+
+}
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+.hero-content {
+
+    width: 43%;
 
     position: relative;
 
-}
-
-
-/* =========================
-   TEXTO
-========================= */
-
-.hero-text {
-
-    width: 42%;
-
-    z-index: 5;
-}
-
-
-.small-title {
-
-    color: red;
-
-    letter-spacing: 6px;
-
-    font-size: 14px;
-
-    margin-bottom: 20px;
+    z-index: 10;
 
 }
 
+
+.line-title {
+
+    color: #ff2020;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.line-title span {
+
+    display: block;
+
+    width: 45px;
+
+    height: 2px;
+
+    background: red;
+
+    box-shadow:
+
+        0 0 10px red;
+
+}
+
+
+/* TITULO */
 
 h1 {
 
-    font-size: clamp(55px, 7vw, 105px);
+    font-size:
+
+        clamp(
+            60px,
+            7vw,
+            105px
+        );
 
     line-height: 0.85;
 
     letter-spacing: 5px;
 
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.3);
+    font-weight: 900;
 
 }
 
@@ -193,92 +327,227 @@ h1 strong {
 
     display: block;
 
-    color: red;
+    color: #ff1010;
 
     text-shadow:
+
         0 0 10px red,
+
         0 0 25px red,
+
         0 0 50px rgba(255,0,0,0.6);
 
 }
 
 
-.description {
+/* SUBTITULO */
 
-    margin-top: 35px;
+h2 {
 
-    max-width: 500px;
+    margin-top: 30px;
 
-    color: #ccc;
+    font-size: 20px;
 
-    font-size: 18px;
+    letter-spacing: 8px;
 
-    line-height: 1.7;
+    line-height: 1.8;
+
+    font-weight: 500;
 
 }
 
 
-button {
+/* DESCRIPCIÓN */
 
-    margin-top: 35px;
+.description {
 
-    padding: 17px 35px;
+    margin-top: 20px;
 
-    background: red;
+    color: #cfcfcf;
 
-    color: white;
+    font-size: 17px;
 
-    border: none;
+    line-height: 1.6;
+
+    max-width: 470px;
+
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.buttons {
+
+    display: flex;
+
+    gap: 18px;
+
+    margin-top: 30px;
+
+}
+
+
+.primary-button,
+.secondary-button {
+
+    padding: 16px 28px;
 
     font-weight: bold;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 
     cursor: pointer;
-
-    box-shadow:
-        0 0 15px red;
 
     transition: 0.3s;
 
 }
 
 
-button:hover {
+.primary-button {
 
-    transform: scale(1.05);
+    background: #ff1111;
+
+    color: white;
+
+    border: 1px solid red;
 
     box-shadow:
-        0 0 20px red,
-        0 0 40px red;
+
+        0 0 15px
+        rgba(255,0,0,0.5);
 
 }
 
 
-/* =========================
-   DRAGÓN
-========================= */
+.primary-button span {
 
-.dragon-container {
+    margin-left: 15px;
+
+    font-size: 20px;
+
+}
+
+
+.primary-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+
+        0 0 25px red,
+
+        0 0 45px
+        rgba(255,0,0,0.5);
+
+}
+
+
+.secondary-button {
+
+    background: transparent;
+
+    color: white;
+
+    border: 1px solid #aaa;
+
+}
+
+
+.secondary-button:hover {
+
+    border-color: red;
+
+    color: red;
+
+}
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
+
+.system-status {
+
+    margin-top: 35px;
+
+    width: 290px;
+
+    padding: 20px;
+
+    border:
+
+        1px solid
+        rgba(255,0,0,0.35);
+
+    background:
+
+        rgba(0,0,0,0.70);
+
+    font-size: 11px;
+
+    line-height: 2;
+
+}
+
+
+.status-title {
+
+    color: #00ff66;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.system-status b {
+
+    color: #00ff66;
+
+    float: right;
+
+    text-shadow:
+
+        0 0 8px #00ff66;
+
+}
+
+
+/* =====================================================
+   ÁREA DEL DRAGÓN
+===================================================== */
+
+.dragon-area {
 
     width: 58%;
 
-    height: 650px;
+    height: 680px;
+
+    position: absolute;
+
+    right: 1%;
+
+    top: 50%;
+
+    transform: translateY(-48%);
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
 
-    position: relative;
+    justify-content: center;
 
 }
 
 
-/* Luz roja detrás */
+/* =====================================================
+   LUZ
+===================================================== */
 
-.red-light {
+.dragon-glow {
 
     position: absolute;
 
@@ -288,74 +557,179 @@ button:hover {
 
     border-radius: 50%;
 
-    background: rgba(255, 0, 0, 0.25);
+    background:
 
-    filter: blur(80px);
+        radial-gradient(
+            circle,
+            rgba(255,0,0,0.35),
+            rgba(255,0,0,0.08) 45%,
+            transparent 70%
+        );
 
-    animation: pulse 3s infinite alternate;
+    filter: blur(25px);
+
+    animation:
+
+        glowPulse 4s
+        ease-in-out
+        infinite alternate;
 
 }
 
 
-@keyframes pulse {
+@keyframes glowPulse {
 
     from {
-        transform: scale(0.8);
 
-        opacity: 0.4;
+        transform: scale(0.85);
+
+        opacity: 0.5;
+
     }
 
     to {
-        transform: scale(1.2);
 
-        opacity: 0.8;
+        transform: scale(1.15);
+
+        opacity: 0.9;
+
     }
 
 }
 
 
-/* DRAGÓN REAL */
+/* =====================================================
+   CÍRCULO DETRÁS DEL DRAGÓN
+===================================================== */
+
+.dragon-ring {
+
+    position: absolute;
+
+    width: 520px;
+
+    height: 520px;
+
+    border:
+
+        2px solid
+        rgba(255,0,0,0.55);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255,0,0,0.5),
+
+        inset 0 0 20px
+        rgba(255,0,0,0.2);
+
+    animation:
+
+        ringRotate
+        20s linear infinite;
+
+}
+
+
+@keyframes ringRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   DRAGÓN
+===================================================== */
 
 .dragon {
 
     position: relative;
 
-    z-index: 3;
+    z-index: 5;
 
-    width: 100%;
+    width: 720px;
 
-    max-width: 750px;
+    max-width: 100%;
+
+    max-height: 650px;
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 0 10px red)
-        drop-shadow(0 0 25px rgba(255,0,0,0.8))
-        drop-shadow(0 0 60px rgba(255,0,0,0.4));
+    /*
+       IMPORTANTE:
+       El dragón que enviaste tiene fondo.
+       MULTIPLY hace que el fondo blanco/oscuro
+       se mezcle con el fondo de la página.
+    */
 
-    transform-style: preserve-3d;
+    mix-blend-mode: multiply;
+
+    filter:
+
+        drop-shadow(
+            0 0 8px
+            rgba(255,0,0,0.9)
+        )
+
+        drop-shadow(
+            0 0 25px
+            rgba(255,0,0,0.8)
+        )
+
+        drop-shadow(
+            0 0 55px
+            rgba(255,0,0,0.4)
+        );
+
 
     animation:
-        dragonEntrance 2.5s ease-out,
-        dragonFloat 5s ease-in-out 2.5s infinite;
+
+        dragonAppear
+        2.5s
+        ease-out
+        forwards,
+
+        dragonFloat
+        5s
+        ease-in-out
+        2.5s
+        infinite;
 
 }
 
 
-/* =========================
+/* =====================================================
    ENTRADA DEL DRAGÓN
-========================= */
+===================================================== */
 
-@keyframes dragonEntrance {
+@keyframes dragonAppear {
 
     0% {
 
         opacity: 0;
 
         transform:
-            rotateY(180deg)
-            scale(0.3)
-            translateX(300px);
+
+            translateX(350px)
+
+            rotateY(100deg)
+
+            scale(0.45);
 
     }
 
@@ -365,8 +739,12 @@ button:hover {
         opacity: 1;
 
         transform:
-            rotateY(90deg)
-            scale(1.1);
+
+            translateX(-20px)
+
+            rotateY(-15deg)
+
+            scale(1.05);
 
     }
 
@@ -376,150 +754,290 @@ button:hover {
         opacity: 1;
 
         transform:
+
+            translateX(0)
+
             rotateY(0deg)
-            scale(1)
-            translateX(0);
+
+            scale(1);
 
     }
 
 }
 
 
-/* =========================
-   DRAGÓN FLOTANDO
-========================= */
+/* =====================================================
+   MOVIMIENTO DEL DRAGÓN
+===================================================== */
 
 @keyframes dragonFloat {
 
     0% {
 
         transform:
-            translateY(0);
+
+            translateY(0)
+
+            rotate(0deg);
 
     }
+
 
     50% {
 
         transform:
-            translateY(-15px);
+
+            translateY(-18px)
+
+            rotate(-1deg);
 
     }
+
 
     100% {
 
         transform:
-            translateY(0);
+
+            translateY(0)
+
+            rotate(0deg);
 
     }
 
 }
 
 
-/* =========================
+/* =====================================================
+   PISO DEL DRAGÓN
+===================================================== */
+
+.dragon-floor {
+
+    position: absolute;
+
+    bottom: 60px;
+
+    width: 500px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+
+        rgba(255,0,0,0.5);
+
+    filter: blur(15px);
+
+    box-shadow:
+
+        0 0 30px red;
+
+}
+
+
+/* =====================================================
+   MENSAJE DERECHO
+===================================================== */
+
+.right-message {
+
+    position: absolute;
+
+    right: 4%;
+
+    top: 38%;
+
+    z-index: 10;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    color: #ddd;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+}
+
+
+.right-message div {
+
+    width: 45px;
+
+    height: 2px;
+
+    background: red;
+
+    margin-top: 15px;
+
+}
+
+
+/* =====================================================
    SERVICIOS
-========================= */
+===================================================== */
 
 .services {
+
+    position: relative;
+
+    z-index: 15;
 
     display: flex;
 
     justify-content: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    padding: 30px 5%;
+    padding: 25px 5%;
 
-    background: rgba(0,0,0,0.8);
+    background:
+
+        rgba(0,0,0,0.88);
+
+    border-top:
+
+        1px solid
+        rgba(255,0,0,0.3);
 
 }
 
 
-.service {
+.service-card {
 
     width: 180px;
 
-    padding: 20px;
+    padding: 22px 10px;
 
     text-align: center;
 
-    border: 1px solid rgba(255,0,0,0.3);
+    border:
 
-    background: rgba(10,10,10,0.8);
+        1px solid
+        rgba(255,0,0,0.25);
+
+    background:
+
+        rgba(10,10,10,0.8);
 
     transition: 0.3s;
 
 }
 
 
-.service:hover {
+.service-card:hover {
 
     border-color: red;
 
+    transform:
+        translateY(-6px);
+
     box-shadow:
-        0 0 20px rgba(255,0,0,0.4);
 
-    transform: translateY(-5px);
-
-}
-
-
-.service:first-letter {
-
-    font-size: 25px;
+        0 0 20px
+        rgba(255,0,0,0.35);
 
 }
 
 
-.service h3 {
+.icon {
 
-    margin-top: 10px;
+    font-size: 28px;
 
-    font-size: 13px;
+    margin-bottom: 10px;
+
+}
+
+
+.service-card h3 {
+
+    font-size: 12px;
 
     letter-spacing: 2px;
 
 }
 
 
-.service p {
+.service-card p {
 
-    color: #777;
+    margin-top: 7px;
 
-    font-size: 11px;
+    color: #888;
 
-    margin-top: 5px;
+    font-size: 10px;
+
+    letter-spacing: 2px;
 
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer {
 
-    text-align: center;
+    position: relative;
 
-    padding: 25px;
+    z-index: 20;
 
-    color: #666;
+    display: flex;
 
-    font-size: 12px;
+    justify-content: space-between;
+
+    padding: 22px 5%;
+
+    background: #030303;
+
+    border-top:
+
+        1px solid
+        rgba(255,0,0,0.2);
+
+    color: #777;
+
+    font-size: 10px;
 
     letter-spacing: 3px;
-
-    border-top: 1px solid rgba(255,0,0,0.2);
 
 }
 
 
-/* =========================
-   CELULAR
-========================= */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 
-    header {
+    nav {
+
+        gap: 15px;
+
+    }
+
+    .admin-button {
+
+        display: none;
+
+    }
+
+    .dragon {
+
+        width: 600px;
+
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .header {
 
         height: auto;
 
@@ -534,8 +1052,6 @@ footer {
 
     nav {
 
-        gap: 15px;
-
         flex-wrap: wrap;
 
         justify-content: center;
@@ -545,32 +1061,76 @@ footer {
 
     .hero {
 
+        height: auto;
+
+        min-height: 1000px;
+
         flex-direction: column;
+
+        padding-top: 60px;
+
+    }
+
+
+    .hero-content {
+
+        width: 100%;
 
         text-align: center;
 
     }
 
 
-    .hero-text {
+    .line-title {
 
-        width: 100%;
+        justify-content: center;
 
     }
 
 
-    .dragon-container {
+    .description {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .buttons {
+
+        justify-content: center;
+
+    }
+
+
+    .dragon-area {
+
+        position: relative;
 
         width: 100%;
 
-        height: 450px;
+        right: auto;
+
+        top: auto;
+
+        transform: none;
+
+        height: 550px;
 
     }
 
 
     .dragon {
 
-        max-width: 500px;
+        width: 600px;
+
+    }
+
+
+    .right-message {
+
+        display: none;
 
     }
 
@@ -578,6 +1138,17 @@ footer {
     .services {
 
         flex-wrap: wrap;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
 
     }
 

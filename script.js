@@ -1,12 +1,33 @@
+¿/* =====================================================
+   MATRIX
+===================================================== */
+
 const canvas = document.getElementById("matrix");
 
 const ctx = canvas.getContext("2d");
 
 
-canvas.width = window.innerWidth;
+/* TAMAÑO */
 
-canvas.height = window.innerHeight;
+function resizeCanvas() {
 
+    canvas.width = window.innerWidth;
+
+    canvas.height = window.innerHeight;
+
+}
+
+
+resizeCanvas();
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+/* CARACTERES */
 
 const characters =
     "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -16,21 +37,47 @@ const fontSize = 16;
 
 
 let columns =
-    Math.floor(canvas.width / fontSize);
+    Math.floor(
+        canvas.width / fontSize
+    );
 
 
 let drops = [];
 
 
-for (let i = 0; i < columns; i++) {
+function createDrops() {
 
-    drops[i] =
-        Math.random() * canvas.height;
+    columns =
+        Math.floor(
+            canvas.width / fontSize
+        );
+
+    drops = [];
+
+    for (
+        let i = 0;
+        i < columns;
+        i++
+    ) {
+
+        drops[i] =
+            Math.random() *
+            canvas.height /
+            fontSize;
+
+    }
 
 }
 
 
-function matrix() {
+createDrops();
+
+
+/* =====================================================
+   DIBUJAR MATRIX
+===================================================== */
+
+function drawMatrix() {
 
     ctx.fillStyle =
         "rgba(0, 0, 0, 0.08)";
@@ -44,11 +91,12 @@ function matrix() {
 
 
     ctx.fillStyle =
-        "#0f5";
+        "#00a83b";
 
 
     ctx.font =
-        fontSize + "px monospace";
+        fontSize +
+        "px monospace";
 
 
     for (
@@ -57,7 +105,8 @@ function matrix() {
         i++
     ) {
 
-        const text =
+
+        const character =
             characters[
                 Math.floor(
                     Math.random() *
@@ -67,16 +116,27 @@ function matrix() {
 
 
         ctx.fillText(
-            text,
+
+            character,
+
             i * fontSize,
+
             drops[i] * fontSize
+
         );
 
 
         if (
-            drops[i] * fontSize >
-            canvas.height &&
-            Math.random() > 0.975
+
+            drops[i] *
+            fontSize >
+            canvas.height
+
+            &&
+
+            Math.random() >
+            0.975
+
         ) {
 
             drops[i] = 0;
@@ -91,41 +151,49 @@ function matrix() {
 }
 
 
-setInterval(matrix, 40);
+/* INICIAR MATRIX */
+
+setInterval(
+    drawMatrix,
+    45
+);
 
 
-/* =========================
-   CAMBIAR TAMAÑO
-========================= */
+/* =====================================================
+   BOTÓN SERVICIOS
+===================================================== */
+
+const serviceButton =
+    document.querySelector(
+        ".primary-button"
+    );
+
+
+serviceButton.addEventListener(
+    "click",
+    function () {
+
+        document
+            .querySelector(".services")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+);
+
+
+/* =====================================================
+   EFECTO AL CARGAR
+===================================================== */
 
 window.addEventListener(
-    "resize",
-    () => {
+    "load",
+    function () {
 
-        canvas.width =
-            window.innerWidth;
-
-        canvas.height =
-            window.innerHeight;
-
-        columns =
-            Math.floor(
-                canvas.width / fontSize
-            );
-
-        drops = [];
-
-        for (
-            let i = 0;
-            i < columns;
-            i++
-        ) {
-
-            drops[i] =
-                Math.random() *
-                canvas.height;
-
-        }
+        console.log(
+            "Dragon Security - Sistema iniciado"
+        );
 
     }
 );
