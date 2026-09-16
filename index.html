@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +12,113 @@
 
 <body>
 
-    <!-- Fondo Matrix -->
+    <!-- MATRIX -->
     <canvas id="matrix"></canvas>
 
-    <!-- Contenido principal -->
-    <main class="container">
+    <!-- CONTENIDO -->
+    <div class="page">
 
-        <div class="dragon" id="dragon">
-            🐉
-        </div>
+        <header>
+            <div class="logo">
+                DRAGON <span>SECURITY</span>
+            </div>
 
-        <h1>DRAGON SECURITY</h1>
+            <nav>
+                <a href="#">INICIO</a>
+                <a href="#">NOSOTROS</a>
+                <a href="#">SERVICIOS</a>
+                <a href="#">TECNOLOGÍA</a>
+                <a href="#">CONTACTO</a>
+            </nav>
+        </header>
 
-        <p class="subtitle">
-            SEGURIDAD • TECNOLOGÍA • PROTECCIÓN
-        </p>
 
-        <button id="accessButton">
-            INGRESAR
-        </button>
+        <section class="hero">
 
-    </main>
+            <!-- TEXTO -->
+            <div class="hero-text">
+
+                <p class="small-title">
+                    SEGURIDAD INTELIGENTE
+                </p>
+
+                <h1>
+                    DRAGON
+                    <strong>SECURITY</strong>
+                </h1>
+
+                <p class="description">
+                    Protección, vigilancia y tecnología
+                    para mantener seguro lo que más importa.
+                </p>
+
+                <button>
+                    NUESTROS SERVICIOS
+                </button>
+
+            </div>
+
+
+            <!-- DRAGÓN -->
+            <div class="dragon-container">
+
+                <div class="red-light"></div>
+
+                <img
+                    src="dragon.png"
+                    alt="Dragon Security"
+                    class="dragon"
+                    id="dragon"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICIOS -->
+
+        <section class="services">
+
+            <div class="service">
+                🛡️
+                <h3>VIGILANCIA</h3>
+                <p>24 / 7</p>
+            </div>
+
+            <div class="service">
+                📹
+                <h3>CCTV</h3>
+                <p>MONITOREO</p>
+            </div>
+
+            <div class="service">
+                🔐
+                <h3>CONTROL</h3>
+                <p>DE ACCESOS</p>
+            </div>
+
+            <div class="service">
+                🏢
+                <h3>SEGURIDAD</h3>
+                <p>RESIDENCIAL</p>
+            </div>
+
+            <div class="service">
+                💻
+                <h3>TECNOLOGÍA</h3>
+                <p>SEGURIDAD</p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            DRAGON SECURITY © 2026
+        </footer>
+
+    </div>
+
 
     <script src="script.js"></script>
 
