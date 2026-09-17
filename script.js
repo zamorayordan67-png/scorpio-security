@@ -1,94 +1,129 @@
-// =============================
-// MENU PARA CELULAR
-// =============================
+/* ==========================================
+   MENÚ CELULAR
+========================================== */
 
-const menuButton = document.getElementById("menuButton");
-const mainMenu = document.getElementById("mainMenu");
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-menuButton.addEventListener("click", function () {
+menuToggle.addEventListener("click", function () {
 
-    mainMenu.classList.toggle("open");
+    navMenu.classList.toggle("active");
 
 });
 
 
-// Cerrar menú al seleccionar una opción
+/* ==========================================
+   CERRAR MENÚ AL SELECCIONAR
+========================================== */
 
-const menuLinks = document.querySelectorAll("#mainMenu a");
+const navLinks = document.querySelectorAll(".nav a");
 
-menuLinks.forEach(function (link) {
+navLinks.forEach(function (link) {
 
     link.addEventListener("click", function () {
 
-        mainMenu.classList.remove("open");
+        navMenu.classList.remove("active");
 
     });
 
 });
 
 
-// =============================
-// FORMULARIO
-// =============================
+/* ==========================================
+   FORMULARIO
+========================================== */
 
-const contactForm =
-    document.getElementById("contactForm");
-
-const formMessage =
-    document.getElementById("formMessage");
-
+const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-    formMessage.textContent =
-        "Gracias por contactarnos. Su mensaje ha sido recibido.";
+    const nombre =
+        document.getElementById("nombre").value;
 
-    contactForm.reset();
+    const telefono =
+        document.getElementById("telefono").value;
+
+    const correo =
+        document.getElementById("correo").value;
+
+    const asunto =
+        document.getElementById("asunto").value;
+
+    const mensaje =
+        document.getElementById("mensaje").value;
+
+
+    const texto =
+        `Hola Dragon Security.
+
+Nombre: ${nombre}
+
+Teléfono: ${telefono}
+
+Correo: ${correo}
+
+Asunto: ${asunto}
+
+Mensaje:
+${mensaje}`;
+
+
+    const whatsapp =
+        "https://wa.me/593983498360?text=" +
+        encodeURIComponent(texto);
+
+
+    window.open(whatsapp, "_blank");
 
 });
 
 
-// =============================
-// CAMBIO DE MENU SEGÚN SECCIÓN
-// =============================
+/* ==========================================
+   ANIMACIÓN AL HACER SCROLL
+========================================== */
 
-const sections =
-    document.querySelectorAll("section[id]");
+const elements =
+    document.querySelectorAll(
+        ".service-card, .about-box, .work-card"
+    );
 
 
-window.addEventListener("scroll", function () {
+const observer =
+    new IntersectionObserver(
+        function (entries) {
 
-    let currentSection = "inicio";
+            entries.forEach(function (entry) {
 
-    sections.forEach(function (section) {
+                if (entry.isIntersecting) {
 
-        const sectionTop =
-            section.offsetTop - 150;
+                    entry.target.style.opacity = "1";
 
-        if (window.scrollY >= sectionTop) {
+                    entry.target.style.transform =
+                        "translateY(0)";
 
-            currentSection = section.id;
+                }
 
+            });
+
+        },
+        {
+            threshold: 0.15
         }
+    );
 
-    });
 
+elements.forEach(function (element) {
 
-    menuLinks.forEach(function (link) {
+    element.style.opacity = "0";
 
-        link.classList.remove("active");
+    element.style.transform =
+        "translateY(25px)";
 
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
+    element.style.transition =
+        "opacity 0.6s ease, transform 0.6s ease";
 
-            link.classList.add("active");
-
-        }
-
-    });
+    observer.observe(element);
 
 });
