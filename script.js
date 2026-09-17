@@ -1,199 +1,94 @@
-¿/* =====================================================
-   MATRIX
-===================================================== */
+// =============================
+// MENU PARA CELULAR
+// =============================
 
-const canvas = document.getElementById("matrix");
+const menuButton = document.getElementById("menuButton");
+const mainMenu = document.getElementById("mainMenu");
 
-const ctx = canvas.getContext("2d");
+menuButton.addEventListener("click", function () {
 
+    mainMenu.classList.toggle("open");
 
-/* TAMAÑO */
-
-function resizeCanvas() {
-
-    canvas.width = window.innerWidth;
-
-    canvas.height = window.innerHeight;
-
-}
+});
 
 
-resizeCanvas();
+// Cerrar menú al seleccionar una opción
+
+const menuLinks = document.querySelectorAll("#mainMenu a");
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        mainMenu.classList.remove("open");
+
+    });
+
+});
 
 
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
+// =============================
+// FORMULARIO
+// =============================
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const formMessage =
+    document.getElementById("formMessage");
 
 
-/* CARACTERES */
+contactForm.addEventListener("submit", function (event) {
 
-const characters =
-    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    event.preventDefault();
 
+    formMessage.textContent =
+        "Gracias por contactarnos. Su mensaje ha sido recibido.";
 
-const fontSize = 16;
+    contactForm.reset();
 
-
-let columns =
-    Math.floor(
-        canvas.width / fontSize
-    );
+});
 
 
-let drops = [];
+// =============================
+// CAMBIO DE MENU SEGÚN SECCIÓN
+// =============================
+
+const sections =
+    document.querySelectorAll("section[id]");
 
 
-function createDrops() {
+window.addEventListener("scroll", function () {
 
-    columns =
-        Math.floor(
-            canvas.width / fontSize
-        );
+    let currentSection = "inicio";
 
-    drops = [];
+    sections.forEach(function (section) {
 
-    for (
-        let i = 0;
-        i < columns;
-        i++
-    ) {
+        const sectionTop =
+            section.offsetTop - 150;
 
-        drops[i] =
-            Math.random() *
-            canvas.height /
-            fontSize;
+        if (window.scrollY >= sectionTop) {
 
-    }
-
-}
-
-
-createDrops();
-
-
-/* =====================================================
-   DIBUJAR MATRIX
-===================================================== */
-
-function drawMatrix() {
-
-    ctx.fillStyle =
-        "rgba(0, 0, 0, 0.08)";
-
-    ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    ctx.fillStyle =
-        "#00a83b";
-
-
-    ctx.font =
-        fontSize +
-        "px monospace";
-
-
-    for (
-        let i = 0;
-        i < drops.length;
-        i++
-    ) {
-
-
-        const character =
-            characters[
-                Math.floor(
-                    Math.random() *
-                    characters.length
-                )
-            ];
-
-
-        ctx.fillText(
-
-            character,
-
-            i * fontSize,
-
-            drops[i] * fontSize
-
-        );
-
-
-        if (
-
-            drops[i] *
-            fontSize >
-            canvas.height
-
-            &&
-
-            Math.random() >
-            0.975
-
-        ) {
-
-            drops[i] = 0;
+            currentSection = section.id;
 
         }
 
-
-        drops[i]++;
-
-    }
-
-}
+    });
 
 
-/* INICIAR MATRIX */
+    menuLinks.forEach(function (link) {
 
-setInterval(
-    drawMatrix,
-    45
-);
+        link.classList.remove("active");
 
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
 
-/* =====================================================
-   BOTÓN SERVICIOS
-===================================================== */
+            link.classList.add("active");
 
-const serviceButton =
-    document.querySelector(
-        ".primary-button"
-    );
+        }
 
+    });
 
-serviceButton.addEventListener(
-    "click",
-    function () {
-
-        document
-            .querySelector(".services")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-    }
-);
-
-
-/* =====================================================
-   EFECTO AL CARGAR
-===================================================== */
-
-window.addEventListener(
-    "load",
-    function () {
-
-        console.log(
-            "Dragon Security - Sistema iniciado"
-        );
-
-    }
-);
+});

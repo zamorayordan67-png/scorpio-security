@@ -1,1155 +1,717 @@
-/* =====================================================
-   CONFIGURACIÓN GENERAL
-===================================================== */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #20252b;
+    background: white;
+    line-height: 1.6;
+}
 
-    background: #000;
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+
+.top-bar {
+    background: #1c2228;
     color: white;
+    font-size: 12px;
+}
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+.top-content {
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
 
-    overflow-x: hidden;
+.top-content a:hover {
+    color: #e30613;
+}
 
+.social {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
 }
 
 
-/* =====================================================
-   MATRIX
-===================================================== */
-
-#matrix {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    z-index: -10;
-
-    background: #000;
-
-}
-
-
-/* =====================================================
-   PÁGINA
-===================================================== */
-
-.page {
-
-    min-height: 100vh;
-
-    position: relative;
-
-    background:
-
-        radial-gradient(
-            circle at 70% 50%,
-            rgba(120, 0, 0, 0.25),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.90),
-            rgba(0,0,0,0.60),
-            rgba(0,0,0,0.75)
-        );
-
-}
-
-
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
 
-    height: 90px;
-
-    padding: 0 5%;
-
+.nav-container {
+    height: 82px;
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    background: rgba(0,0,0,0.85);
-
-    border-bottom:
-
-        1px solid
-        rgba(255,0,0,0.45);
-
-    position: relative;
-
-    z-index: 20;
-
 }
 
-
-/* LOGO */
-
-.logo {
-
+.logo-area {
     display: flex;
-
-    flex-direction: column;
-
-    line-height: 1;
-
+    align-items: center;
+    gap: 10px;
 }
 
-
-.logo span {
-
-    color: white;
-
-    font-size: 29px;
-
-    font-weight: 900;
-
-    letter-spacing: 4px;
-
-    text-shadow:
-
-        0 0 10px rgba(255,0,0,0.8);
-
+.logo-area img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
 }
 
-
-.logo small {
-
-    color: #ff1a1a;
-
-    font-size: 10px;
-
-    letter-spacing: 7px;
-
-    text-align: center;
-
-    margin-top: 6px;
-
+.logo-area strong {
+    display: block;
+    font-size: 18px;
 }
 
-
-/* NAV */
+.logo-area small {
+    display: block;
+    font-weight: bold;
+    font-size: 11px;
+}
 
 nav {
-
     display: flex;
-
-    gap: 32px;
-
+    align-items: center;
+    gap: 25px;
 }
-
 
 nav a {
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    letter-spacing: 2px;
-
-    transition: 0.3s;
-
-}
-
-
-nav a:hover {
-
-    color: #ff1616;
-
-    text-shadow:
-
-        0 0 10px red;
-
-}
-
-
-/* ADMIN */
-
-.admin-button {
-
-    text-decoration: none;
-
-    color: white;
-
-    border:
-
-        1px solid
-        #ff1616;
-
-    padding: 13px 20px;
-
     font-size: 12px;
+    font-weight: bold;
+    padding: 30px 0;
+    border-bottom: 3px solid transparent;
+}
 
-    letter-spacing: 1px;
+nav a:hover,
+nav a.active {
+    color: #e30613;
+    border-color: #e30613;
+}
 
-    transition: 0.3s;
-
+.menu-button {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 28px;
 }
 
 
-.admin-button:hover {
-
-    background: #ff1616;
-
-    box-shadow:
-
-        0 0 20px red;
-
-}
-
-
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero {
-
-    min-height: 700px;
-
-    height: calc(100vh - 90px);
-
-    min-height: 650px;
-
     position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    padding: 30px 5%;
-
+    height: 650px;
     overflow: hidden;
-
 }
 
-
-/* =====================================================
-   TEXTO
-===================================================== */
-
-.hero-content {
-
-    width: 43%;
-
-    position: relative;
-
-    z-index: 10;
-
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.25),
+        rgba(0,0,0,0)
+    );
+}
 
-.line-title {
-
-    color: #ff2020;
-
-    font-size: 13px;
-
-    letter-spacing: 5px;
-
+.hero-container {
+    position: absolute;
+    inset: 0;
     display: flex;
-
     align-items: center;
+}
 
-    gap: 10px;
+.hero-box {
+    background: rgba(0,0,0,.82);
+    color: white;
+    padding: 35px;
+    width: 450px;
+}
 
+.red-line {
+    width: 35px;
+    height: 4px;
+    background: #e30613;
+    margin-bottom: 12px;
+}
+
+.small-title,
+.section-title {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero-box h1 {
+    font-size: 48px;
+    line-height: 1.05;
+    margin: 10px 0;
+}
+
+.hero-box h1 span {
+    color: #e30613;
+}
+
+.hero-text {
+    font-size: 21px;
     margin-bottom: 25px;
+}
 
+.button-red {
+    display: inline-block;
+    background: #e30613;
+    color: white;
+    padding: 13px 25px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.button-red:hover {
+    background: #b8000b;
 }
 
 
-.line-title span {
+/* =========================
+   ABOUT
+========================= */
 
-    display: block;
-
-    width: 45px;
-
-    height: 2px;
-
-    background: red;
-
-    box-shadow:
-
-        0 0 10px red;
-
+.about {
+    padding: 90px 0;
 }
 
-
-/* TITULO */
-
-h1 {
-
-    font-size:
-
-        clamp(
-            60px,
-            7vw,
-            105px
-        );
-
-    line-height: 0.85;
-
-    letter-spacing: 5px;
-
-    font-weight: 900;
-
+.about-grid,
+.responsibility-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
 }
-
-
-h1 strong {
-
-    display: block;
-
-    color: #ff1010;
-
-    text-shadow:
-
-        0 0 10px red,
-
-        0 0 25px red,
-
-        0 0 50px rgba(255,0,0,0.6);
-
-}
-
-
-/* SUBTITULO */
 
 h2 {
-
-    margin-top: 30px;
-
-    font-size: 20px;
-
-    letter-spacing: 8px;
-
-    line-height: 1.8;
-
-    font-weight: 500;
-
+    font-size: 32px;
+    line-height: 1.2;
+    margin-top: 8px;
 }
 
-
-/* DESCRIPCIÓN */
-
-.description {
-
-    margin-top: 20px;
-
-    color: #cfcfcf;
-
-    font-size: 17px;
-
-    line-height: 1.6;
-
-    max-width: 470px;
-
+.about-text p {
+    margin-bottom: 18px;
 }
 
-
-/* =====================================================
-   BOTONES
-===================================================== */
-
-.buttons {
-
-    display: flex;
-
-    gap: 18px;
-
-    margin-top: 30px;
-
-}
-
-
-.primary-button,
-.secondary-button {
-
-    padding: 16px 28px;
-
+.text-link {
+    color: #e30613;
     font-weight: bold;
-
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
 }
 
 
-.primary-button {
-
-    background: #ff1111;
-
-    color: white;
-
-    border: 1px solid red;
-
-    box-shadow:
-
-        0 0 15px
-        rgba(255,0,0,0.5);
-
-}
-
-
-.primary-button span {
-
-    margin-left: 15px;
-
-    font-size: 20px;
-
-}
-
-
-.primary-button:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-
-        0 0 25px red,
-
-        0 0 45px
-        rgba(255,0,0,0.5);
-
-}
-
-
-.secondary-button {
-
-    background: transparent;
-
-    color: white;
-
-    border: 1px solid #aaa;
-
-}
-
-
-.secondary-button:hover {
-
-    border-color: red;
-
-    color: red;
-
-}
-
-
-/* =====================================================
-   ESTADO
-===================================================== */
-
-.system-status {
-
-    margin-top: 35px;
-
-    width: 290px;
-
-    padding: 20px;
-
-    border:
-
-        1px solid
-        rgba(255,0,0,0.35);
-
-    background:
-
-        rgba(0,0,0,0.70);
-
-    font-size: 11px;
-
-    line-height: 2;
-
-}
-
-
-.status-title {
-
-    color: #00ff66;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
-
-}
-
-
-.system-status b {
-
-    color: #00ff66;
-
-    float: right;
-
-    text-shadow:
-
-        0 0 8px #00ff66;
-
-}
-
-
-/* =====================================================
-   ÁREA DEL DRAGÓN
-===================================================== */
-
-.dragon-area {
-
-    width: 58%;
-
-    height: 680px;
-
-    position: absolute;
-
-    right: 1%;
-
-    top: 50%;
-
-    transform: translateY(-48%);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-/* =====================================================
-   LUZ
-===================================================== */
-
-.dragon-glow {
-
-    position: absolute;
-
-    width: 500px;
-
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(255,0,0,0.35),
-            rgba(255,0,0,0.08) 45%,
-            transparent 70%
-        );
-
-    filter: blur(25px);
-
-    animation:
-
-        glowPulse 4s
-        ease-in-out
-        infinite alternate;
-
-}
-
-
-@keyframes glowPulse {
-
-    from {
-
-        transform: scale(0.85);
-
-        opacity: 0.5;
-
-    }
-
-    to {
-
-        transform: scale(1.15);
-
-        opacity: 0.9;
-
-    }
-
-}
-
-
-/* =====================================================
-   CÍRCULO DETRÁS DEL DRAGÓN
-===================================================== */
-
-.dragon-ring {
-
-    position: absolute;
-
-    width: 520px;
-
-    height: 520px;
-
-    border:
-
-        2px solid
-        rgba(255,0,0,0.55);
-
-    border-radius: 50%;
-
-    box-shadow:
-
-        0 0 20px
-        rgba(255,0,0,0.5),
-
-        inset 0 0 20px
-        rgba(255,0,0,0.2);
-
-    animation:
-
-        ringRotate
-        20s linear infinite;
-
-}
-
-
-@keyframes ringRotate {
-
-    from {
-
-        transform:
-            rotate(0deg);
-
-    }
-
-    to {
-
-        transform:
-            rotate(360deg);
-
-    }
-
-}
-
-
-/* =====================================================
-   DRAGÓN
-===================================================== */
-
-.dragon {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: 720px;
-
-    max-width: 100%;
-
-    max-height: 650px;
-
-    object-fit: contain;
-
-    /*
-       IMPORTANTE:
-       El dragón que enviaste tiene fondo.
-       MULTIPLY hace que el fondo blanco/oscuro
-       se mezcle con el fondo de la página.
-    */
-
-    mix-blend-mode: multiply;
-
-    filter:
-
-        drop-shadow(
-            0 0 8px
-            rgba(255,0,0,0.9)
-        )
-
-        drop-shadow(
-            0 0 25px
-            rgba(255,0,0,0.8)
-        )
-
-        drop-shadow(
-            0 0 55px
-            rgba(255,0,0,0.4)
-        );
-
-
-    animation:
-
-        dragonAppear
-        2.5s
-        ease-out
-        forwards,
-
-        dragonFloat
-        5s
-        ease-in-out
-        2.5s
-        infinite;
-
-}
-
-
-/* =====================================================
-   ENTRADA DEL DRAGÓN
-===================================================== */
-
-@keyframes dragonAppear {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-
-            translateX(350px)
-
-            rotateY(100deg)
-
-            scale(0.45);
-
-    }
-
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-
-            translateX(-20px)
-
-            rotateY(-15deg)
-
-            scale(1.05);
-
-    }
-
-
-    100% {
-
-        opacity: 1;
-
-        transform:
-
-            translateX(0)
-
-            rotateY(0deg)
-
-            scale(1);
-
-    }
-
-}
-
-
-/* =====================================================
-   MOVIMIENTO DEL DRAGÓN
-===================================================== */
-
-@keyframes dragonFloat {
-
-    0% {
-
-        transform:
-
-            translateY(0)
-
-            rotate(0deg);
-
-    }
-
-
-    50% {
-
-        transform:
-
-            translateY(-18px)
-
-            rotate(-1deg);
-
-    }
-
-
-    100% {
-
-        transform:
-
-            translateY(0)
-
-            rotate(0deg);
-
-    }
-
-}
-
-
-/* =====================================================
-   PISO DEL DRAGÓN
-===================================================== */
-
-.dragon-floor {
-
-    position: absolute;
-
-    bottom: 60px;
-
-    width: 500px;
-
-    height: 25px;
-
-    border-radius: 50%;
-
-    background:
-
-        rgba(255,0,0,0.5);
-
-    filter: blur(15px);
-
-    box-shadow:
-
-        0 0 30px red;
-
-}
-
-
-/* =====================================================
-   MENSAJE DERECHO
-===================================================== */
-
-.right-message {
-
-    position: absolute;
-
-    right: 4%;
-
-    top: 38%;
-
-    z-index: 10;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    color: #ddd;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-}
-
-
-.right-message div {
-
-    width: 45px;
-
-    height: 2px;
-
-    background: red;
-
-    margin-top: 15px;
-
-}
-
-
-/* =====================================================
+/* =========================
    SERVICIOS
-===================================================== */
+========================= */
 
 .services {
-
-    position: relative;
-
-    z-index: 15;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    padding: 25px 5%;
-
-    background:
-
-        rgba(0,0,0,0.88);
-
-    border-top:
-
-        1px solid
-        rgba(255,0,0,0.3);
-
+    background: #f3f4f5;
+    padding: 75px 0;
 }
 
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.button-outline {
+    border: 2px solid #e30613;
+    color: #e30613;
+    padding: 11px 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
 
 .service-card {
-
-    width: 180px;
-
-    padding: 22px 10px;
-
-    text-align: center;
-
-    border:
-
-        1px solid
-        rgba(255,0,0,0.25);
-
-    background:
-
-        rgba(10,10,10,0.8);
-
-    transition: 0.3s;
-
+    background: white;
+    box-shadow: 0 3px 15px rgba(0,0,0,.06);
 }
 
-
-.service-card:hover {
-
-    border-color: red;
-
-    transform:
-        translateY(-6px);
-
-    box-shadow:
-
-        0 0 20px
-        rgba(255,0,0,0.35);
-
+.service-image {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #252b31;
+    color: white;
+    font-size: 45px;
 }
 
+.service-content {
+    padding: 23px;
+}
 
-.icon {
-
-    font-size: 28px;
-
+.service-content h3 {
+    font-size: 15px;
     margin-bottom: 10px;
-
 }
 
+.service-content p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 15px;
+}
 
-.service-card h3 {
-
+.service-content a {
+    color: #e30613;
     font-size: 12px;
-
-    letter-spacing: 2px;
-
+    font-weight: bold;
 }
 
 
-.service-card p {
+/* =========================
+   ESTADISTICAS
+========================= */
 
-    margin-top: 7px;
+.stats {
+    background: #20252b;
+    color: white;
+    padding: 40px 0;
+}
 
-    color: #888;
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
 
-    font-size: 10px;
+.stats-grid div {
+    border-right: 1px solid rgba(255,255,255,.2);
+}
 
-    letter-spacing: 2px;
+.stats-grid div:last-child {
+    border: none;
+}
 
+.stats-grid strong {
+    display: block;
+    font-size: 28px;
+}
+
+.stats-grid span {
+    font-size: 12px;
+    color: #ccc;
 }
 
 
-/* =====================================================
+/* =========================
+   RESPONSABILIDAD
+========================= */
+
+.responsibility {
+    padding: 90px 0;
+}
+
+.responsibility ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.responsibility li {
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   TRABAJO
+========================= */
+
+.careers {
+    background: #f1f2f3;
+    padding: 70px 0;
+}
+
+.career-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contact {
+    background: #f4f5f6;
+    padding: 80px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 45px;
+}
+
+.contact-information h2 {
+    margin-bottom: 20px;
+}
+
+.contact-information > p {
+    margin-bottom: 25px;
+}
+
+.contact-data p {
+    margin: 15px 0;
+}
+
+.contact-data a {
+    color: #222;
+}
+
+.whatsapp {
+    display: inline-block;
+    background: #20252b;
+    color: white;
+    padding: 13px 18px;
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 13px;
+    border: 1px solid #d7dadd;
+    font-family: inherit;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #e30613;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    background: #e30613;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #b8000b;
+}
+
+#formMessage {
+    margin-top: 10px;
+    color: #e30613;
+    font-size: 12px;
+}
+
+
+/* =========================
+   MAPA
+========================= */
+
+.location {
+    padding: 70px 0;
+}
+
+.map {
+    margin-top: 25px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+}
+
+
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer {
+    background: #1d2329;
+    color: white;
+}
 
-    position: relative;
+.footer-content {
+    min-height: 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+}
 
-    z-index: 20;
-
+.footer-logo {
     display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    justify-content: space-between;
+.footer-logo img {
+    width: 55px;
+}
 
-    padding: 22px 5%;
+.footer-logo strong {
+    display: block;
+}
 
-    background: #030303;
+.footer-logo small {
+    display: block;
+}
 
-    border-top:
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 11px;
+}
 
-        1px solid
-        rgba(255,0,0,0.2);
+.footer-links a:hover {
+    color: #e30613;
+}
 
-    color: #777;
+.footer-contact {
+    font-size: 12px;
+}
 
-    font-size: 10px;
+.copyright {
+    border-top: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: #aaa;
+}
 
-    letter-spacing: 3px;
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.floating-whatsapp {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 55px;
+    height: 55px;
+    background: #e30613;
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    z-index: 2000;
+    box-shadow: 0 5px 20px rgba(0,0,0,.4);
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+@media (max-width: 700px) {
 
-@media (max-width: 1100px) {
-
-    nav {
-
-        gap: 15px;
-
-    }
-
-    .admin-button {
-
-        display: none;
-
-    }
-
-    .dragon {
-
-        width: 600px;
-
-    }
-
-}
-
-
-@media (max-width: 850px) {
-
-    .header {
-
-        height: auto;
-
-        padding: 20px;
-
-        flex-direction: column;
-
-        gap: 20px;
-
-    }
-
-
-    nav {
-
+    .top-content {
+        gap: 10px;
         flex-wrap: wrap;
-
-        justify-content: center;
-
+        padding: 8px 0;
     }
 
+    .social {
+        display: none;
+    }
+
+    .nav-container {
+        height: 70px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5%;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        padding: 14px 0;
+        border-bottom: 1px solid #eee;
+    }
 
     .hero {
+        height: 570px;
+    }
 
-        height: auto;
+    .hero-box {
+        width: 92%;
+        padding: 25px;
+    }
 
-        min-height: 1000px;
+    .hero-box h1 {
+        font-size: 35px;
+    }
 
+    .about-grid,
+    .responsibility-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .section-header {
         flex-direction: column;
-
-        padding-top: 60px;
-
+        align-items: flex-start;
+        gap: 20px;
     }
 
-
-    .hero-content {
-
-        width: 100%;
-
-        text-align: center;
-
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .line-title {
-
-        justify-content: center;
-
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
     }
 
-
-    .description {
-
-        margin-left: auto;
-
-        margin-right: auto;
-
+    .stats-grid div {
+        border: none;
     }
 
-
-    .buttons {
-
-        justify-content: center;
-
-    }
-
-
-    .dragon-area {
-
-        position: relative;
-
-        width: 100%;
-
-        right: auto;
-
-        top: auto;
-
-        transform: none;
-
-        height: 550px;
-
-    }
-
-
-    .dragon {
-
-        width: 600px;
-
-    }
-
-
-    .right-message {
-
-        display: none;
-
-    }
-
-
-    .services {
-
-        flex-wrap: wrap;
-
-    }
-
-
-    footer {
-
+    .career-box {
         flex-direction: column;
+        align-items: flex-start;
+    }
 
-        gap: 15px;
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 
-        text-align: center;
+    .footer-content {
+        grid-template-columns: 1fr;
+        padding: 30px 0;
+    }
 
+}
+
+
+@media (max-width: 450px) {
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .hero-box h1 {
+        font-size: 30px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 
 }
