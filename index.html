@@ -2,14 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Dragon Security - Servicios profesionales de seguridad y vigilancia.">
+    <title>Dragón Security Cia. Ltda.</title>
 
-    <title>Dragon Security | Seguridad Profesional</title>
+    <meta name="description" content="Dragón Security - Servicios profesionales de seguridad y vigilancia en Ecuador">
 
+    <!-- Iconos -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -18,513 +21,362 @@
     <!-- =========================
          BARRA SUPERIOR
     ========================== -->
-
     <div class="top-bar">
-        <div class="container top-content">
-            <span>🇪🇨 Ecuador</span>
-
+        <div class="top-content">
             <span>
-                Seguridad profesional y confianza
+                <i class="fa-solid fa-shield-halved"></i>
+                Seguridad profesional en Ecuador
             </span>
+
+            <div class="social-icons">
+                <a href="https://wa.me/593983498360"
+                   target="_blank"
+                   aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#contacto"
+                   aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
         </div>
     </div>
 
 
     <!-- =========================
-         MENÚ PRINCIPAL
+         MENÚ
     ========================== -->
-
     <header class="header">
 
-        <div class="container nav-container">
-
-            <!-- LOGO -->
-
-            <a href="#inicio" class="logo">
+        <div class="logo-container">
+            <a href="#inicio">
                 <img src="imagenes/logo.png"
-                     alt="Dragon Security">
+                     alt="Dragón Security">
+            </a>
+        </div>
+
+        <button class="menu-button" id="menuButton">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="navigation" id="navigation">
+
+            <a href="#inicio">INICIO</a>
+
+            <a href="#quienes-somos">
+                QUIÉNES SOMOS
             </a>
 
+            <a href="#servicios">
+                QUÉ HACEMOS
+            </a>
 
-            <!-- BOTÓN MENÚ CELULAR -->
+            <a href="#responsabilidad">
+                RESPONSABILIDAD SOCIAL
+            </a>
 
-            <button class="menu-toggle" id="menuToggle">
-                ☰
-            </button>
+            <a href="#trabajo">
+                TRABAJA CON NOSOTROS
+            </a>
 
+            <a href="#contacto">
+                CONTACTOS
+            </a>
 
-            <!-- NAVEGACIÓN -->
-
-            <nav class="nav" id="navMenu">
-
-                <a href="#inicio">INICIO</a>
-
-                <a href="#nosotros">QUIÉNES SOMOS</a>
-
-                <a href="#servicios">QUÉ HACEMOS</a>
-
-                <a href="#responsabilidad">
-                    RESPONSABILIDAD SOCIAL
-                </a>
-
-                <a href="#trabajo">
-                    TRABAJA CON NOSOTROS
-                </a>
-
-                <a href="#contacto">
-                    CONTACTOS
-                </a>
-
-            </nav>
-
-        </div>
+        </nav>
 
     </header>
 
 
-
     <!-- =========================
-         INICIO / HERO
+         HERO / IMAGEN PRINCIPAL
     ========================== -->
-
-    <main id="inicio">
-
-        <section class="hero">
-
-            <img
-                src="imagenes/guardia-moto.png"
-                alt="Guardia de seguridad de Dragon Security en motocicleta"
-            >
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content">
-
-                <span class="hero-small">
-                    DRAGON SECURITY
-                </span>
-
-                <h1>
-                    SEGURIDAD QUE PROTEGE
-                    TU TRANQUILIDAD
-                </h1>
-
-                <p>
-                    Vigilancia, prevención y protección
-                    profesional para personas, empresas
-                    y comunidades.
-                </p>
-
-                <a href="#contacto" class="hero-button">
-                    CONTÁCTANOS
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             QUIÉNES SOMOS
-        ========================== -->
-
-        <section class="section about" id="nosotros">
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span>DRAGON SECURITY</span>
-
-                    <h2>
-                        QUIÉNES SOMOS
-                    </h2>
-
-                    <div class="title-line"></div>
-
-                </div>
-
-
-                <div class="about-grid">
-
-                    <div class="about-text">
-
-                        <h3>
-                            Seguridad profesional
-                            para tu tranquilidad
-                        </h3>
-
-                        <p>
-                            En Dragon Security trabajamos para
-                            brindar servicios de seguridad,
-                            vigilancia y prevención orientados
-                            a proteger personas, bienes e
-                            instalaciones.
-                        </p>
-
-                        <p>
-                            Nuestro compromiso está basado en
-                            la responsabilidad, disciplina,
-                            prevención y atención permanente.
-                        </p>
-
-                        <a href="#contacto" class="text-button">
-                            CONOCER MÁS
-                        </a>
-
-                    </div>
-
-
-                    <div class="about-box">
-
-                        <div class="about-number">
-                            01
-                        </div>
-
-                        <h3>
-                            VIGILANCIA
-                        </h3>
-
-                        <p>
-                            Control y protección permanente
-                            para mantener espacios seguros.
-                        </p>
-
-                    </div>
-
-
-                    <div class="about-box">
-
-                        <div class="about-number">
-                            02
-                        </div>
-
-                        <h3>
-                            PREVENCIÓN
-                        </h3>
-
-                        <p>
-                            Identificación de riesgos y
-                            actuación preventiva.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             SERVICIOS
-        ========================== -->
-
-        <section class="section services" id="servicios">
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span>NUESTROS SERVICIOS</span>
-
-                    <h2>
-                        SOLUCIONES DE SEGURIDAD
-                    </h2>
-
-                    <div class="title-line"></div>
-
-                </div>
-
-
-                <div class="services-grid">
-
-
-                    <!-- SERVICIO 1 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            01
-                        </div>
-
-                        <h3>
-                            SEGURIDAD FÍSICA
-                        </h3>
-
-                        <p>
-                            Personal de seguridad preparado
-                            para realizar vigilancia,
-                            control de accesos y protección
-                            de instalaciones.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICIO 2 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            02
-                        </div>
-
-                        <h3>
-                            VIGILANCIA MÓVIL
-                        </h3>
-
-                        <p>
-                            Rondas preventivas y patrullaje
-                            para supervisar instalaciones
-                            y sectores asignados.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICIO 3 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            03
-                        </div>
-
-                        <h3>
-                            CONTROL DE ACCESOS
-                        </h3>
-
-                        <p>
-                            Control de ingreso y salida de
-                            personas, vehículos y visitantes.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICIO 4 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            04
-                        </div>
-
-                        <h3>
-                            SEGURIDAD RESIDENCIAL
-                        </h3>
-
-                        <p>
-                            Protección para urbanizaciones,
-                            conjuntos residenciales y
-                            comunidades.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICIO 5 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            05
-                        </div>
-
-                        <h3>
-                            SEGURIDAD EMPRESARIAL
-                        </h3>
-
-                        <p>
-                            Servicios de vigilancia adaptados
-                            a las necesidades de empresas y
-                            establecimientos.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- SERVICIO 6 -->
-
-                    <article class="service-card">
-
-                        <div class="service-number">
-                            06
-                        </div>
-
-                        <h3>
-                            RONDAS PREVENTIVAS
-                        </h3>
-
-                        <p>
-                            Supervisión periódica para detectar
-                            novedades y reducir riesgos.
-                        </p>
-
-                        <a href="#contacto">
-                            LEER MÁS →
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             BANNER
-        ========================== -->
-
-        <section class="security-banner">
-
-            <div class="container banner-content">
-
-                <div>
-
-                    <span>
-                        PROTECCIÓN Y CONFIANZA
-                    </span>
-
-                    <h2>
-                        TU SEGURIDAD ES
-                        NUESTRA PRIORIDAD
-                    </h2>
-
-                </div>
-
-                <a href="#contacto" class="banner-button">
-                    SOLICITAR INFORMACIÓN
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             RESPONSABILIDAD SOCIAL
-        ========================== -->
-
-        <section
-            class="section responsibility"
-            id="responsabilidad"
+    <section class="hero" id="inicio">
+
+        <img
+            src="imagenes/guardia-moto.png"
+            alt="Guardia de Dragón Security en motocicleta"
+            class="hero-image"
         >
 
-            <div class="container">
+        <div class="hero-overlay"></div>
 
-                <div class="section-title">
+        <div class="hero-content">
 
-                    <span>NUESTRO COMPROMISO</span>
+            <span class="hero-small">
+                DRAGÓN SECURITY
+            </span>
 
-                    <h2>
-                        RESPONSABILIDAD SOCIAL
-                    </h2>
+            <h1>
+                Seguridad que protege
+                <br>
+                tu tranquilidad
+            </h1>
 
-                    <div class="title-line"></div>
+            <p>
+                Protección profesional,
+                vigilancia y prevención.
+            </p>
+
+            <a href="#contacto" class="hero-button">
+                SOLICITAR INFORMACIÓN
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUIÉNES SOMOS
+    ========================== -->
+    <section class="about" id="quienes-somos">
+
+        <div class="section-container">
+
+            <div class="section-title">
+
+                <span>DRAGÓN SECURITY</span>
+
+                <h2>
+                    QUIÉNES SOMOS
+                </h2>
+
+                <div class="red-line"></div>
+
+            </div>
+
+            <div class="about-content">
+
+                <div class="about-text">
+
+                    <h3>
+                        Seguridad profesional
+                    </h3>
+
+                    <p>
+                        En Dragón Security trabajamos para brindar
+                        servicios profesionales de seguridad,
+                        vigilancia y prevención.
+                    </p>
+
+                    <p>
+                        Nuestro compromiso es proteger personas,
+                        instalaciones y bienes mediante procedimientos
+                        de seguridad orientados a la prevención.
+                    </p>
 
                 </div>
 
+                <div class="about-box">
 
-                <div class="responsibility-grid">
+                    <i class="fa-solid fa-shield-halved"></i>
 
-                    <div>
+                    <h3>
+                        PROTECCIÓN
+                    </h3>
 
-                        <h3>
-                            Compromiso con nuestra comunidad
-                        </h3>
-
-                        <p>
-                            Promovemos una cultura basada en
-                            la prevención, el respeto y la
-                            responsabilidad.
-                        </p>
-
-                        <p>
-                            Nuestro trabajo busca contribuir
-                            a espacios más organizados,
-                            seguros y protegidos.
-                        </p>
-
-                    </div>
-
-
-                    <div class="responsibility-list">
-
-                        <div>
-                            <strong>✓</strong>
-                            Prevención
-                        </div>
-
-                        <div>
-                            <strong>✓</strong>
-                            Responsabilidad
-                        </div>
-
-                        <div>
-                            <strong>✓</strong>
-                            Disciplina
-                        </div>
-
-                        <div>
-                            <strong>✓</strong>
-                            Profesionalismo
-                        </div>
-
-                    </div>
+                    <p>
+                        Vigilancia y control permanente.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
+    <!-- =========================
+         SERVICIOS
+    ========================== -->
+    <section class="services" id="servicios">
 
-        <!-- =========================
-             TRABAJA CON NOSOTROS
-        ========================== -->
+        <div class="section-container">
 
-        <section class="work-section" id="trabajo">
+            <div class="section-title center">
 
-            <div class="container work-grid">
+                <span>NUESTROS SERVICIOS</span>
+
+                <h2>
+                    QUÉ HACEMOS
+                </h2>
+
+                <div class="red-line"></div>
+
+            </div>
+
+
+            <div class="services-grid">
+
+                <!-- SERVICIO 1 -->
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <h3>
+                        SEGURIDAD FÍSICA
+                    </h3>
+
+                    <p>
+                        Servicios de vigilancia y protección
+                        para empresas, urbanizaciones,
+                        edificios y propiedades.
+                    </p>
+
+                    <a href="#contacto">
+                        LEER MÁS
+                    </a>
+
+                </article>
+
+
+                <!-- SERVICIO 2 -->
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-motorcycle"></i>
+                    </div>
+
+                    <h3>
+                        PATRULLAJE MOTORIZADO
+                    </h3>
+
+                    <p>
+                        Vigilancia preventiva mediante
+                        unidades motorizadas para fortalecer
+                        la seguridad de las instalaciones.
+                    </p>
+
+                    <a href="#contacto">
+                        LEER MÁS
+                    </a>
+
+                </article>
+
+
+                <!-- SERVICIO 3 -->
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <h3>
+                        MONITOREO Y CONTROL
+                    </h3>
+
+                    <p>
+                        Supervisión, control de accesos
+                        y apoyo mediante sistemas de
+                        seguridad y vigilancia.
+                    </p>
+
+                    <a href="#contacto">
+                        LEER MÁS
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESPONSABILIDAD SOCIAL
+    ========================== -->
+    <section class="responsibility" id="responsabilidad">
+
+        <div class="section-container">
+
+            <div class="section-title center">
+
+                <span>NUESTRO COMPROMISO</span>
+
+                <h2>
+                    RESPONSABILIDAD SOCIAL
+                </h2>
+
+                <div class="red-line"></div>
+
+            </div>
+
+            <div class="responsibility-content">
+
+                <div class="responsibility-item">
+
+                    <i class="fa-solid fa-people-group"></i>
+
+                    <h3>
+                        COMPROMISO
+                    </h3>
+
+                    <p>
+                        Trabajamos con responsabilidad y
+                        profesionalismo.
+                    </p>
+
+                </div>
+
+
+                <div class="responsibility-item">
+
+                    <i class="fa-solid fa-handshake"></i>
+
+                    <h3>
+                        CONFIANZA
+                    </h3>
+
+                    <p>
+                        Construimos relaciones basadas
+                        en confianza y respeto.
+                    </p>
+
+                </div>
+
+
+                <div class="responsibility-item">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <h3>
+                        SEGURIDAD
+                    </h3>
+
+                    <p>
+                        La prevención es parte fundamental
+                        de nuestro trabajo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRABAJA CON NOSOTROS
+    ========================== -->
+    <section class="work" id="trabajo">
+
+        <div class="section-container">
+
+            <div class="work-content">
 
                 <div>
 
-                    <span>
+                    <span class="section-label">
                         ÚNETE A NUESTRO EQUIPO
                     </span>
 
@@ -534,254 +386,182 @@
 
                     <p>
                         Si deseas formar parte de nuestro
-                        equipo de seguridad, puedes ponerte
-                        en contacto con nosotros.
+                        equipo de seguridad, puedes comunicarte
+                        con nosotros para obtener información.
                     </p>
-
-                    <a
-                        href="mailto:zarateyordan@outlook.com"
-                        class="work-button"
-                    >
-                        ENVIAR HOJA DE VIDA
-                    </a>
 
                 </div>
 
+                <a href="#contacto" class="dark-button">
+                    CONTÁCTANOS
+                </a>
 
-                <div class="work-card">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACTO
+    ========================== -->
+    <section class="contact" id="contacto">
+
+        <div class="section-container">
+
+            <div class="section-title center">
+
+                <span>ESTAMOS PARA SERVIRTE</span>
+
+                <h2>
+                    CONTÁCTANOS
+                </h2>
+
+                <div class="red-line"></div>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+                <!-- DATOS -->
+                <div class="contact-info">
 
                     <h3>
-                        ¿BUSCAS UNA OPORTUNIDAD?
+                        DRAGÓN SECURITY
                     </h3>
 
                     <p>
-                        Envíanos tus datos y podremos
-                        contactarte para futuras
-                        oportunidades laborales.
+                        <i class="fa-solid fa-location-dot"></i>
+                        Ecuador
                     </p>
 
                     <p>
-                        <strong>
-                            zarateyordan@outlook.com
-                        </strong>
+                        <i class="fa-solid fa-phone"></i>
+
+                        <a href="tel:+593983498360">
+                            098 349 8360
+                        </a>
                     </p>
 
-                </div>
+                    <p>
+                        <i class="fa-solid fa-envelope"></i>
 
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             CONTACTO
-        ========================== -->
-
-        <section class="contact-section" id="contacto">
-
-            <div class="container">
-
-                <div class="section-title light">
-
-                    <span>ESTAMOS PARA SERVIRTE</span>
-
-                    <h2>
-                        CONTÁCTANOS
-                    </h2>
-
-                    <div class="title-line"></div>
-
-                </div>
+                        <a href="mailto:zarateyordan@outlook.com">
+                            zarateyordan@outlook.com
+                        </a>
+                    </p>
 
 
-                <div class="contact-grid">
+                    <div class="contact-social">
 
+                        <a href="https://wa.me/593983498360"
+                           target="_blank"
+                           aria-label="WhatsApp">
 
-                    <!-- INFORMACIÓN -->
+                            <i class="fa-brands fa-whatsapp"></i>
 
-                    <div class="contact-info">
+                        </a>
 
-                        <h3>
-                            DRAGON SECURITY
-                        </h3>
+                        <a href="#contacto"
+                           aria-label="Facebook">
 
-                        <p>
-                            Seguridad profesional,
-                            vigilancia y prevención.
-                        </p>
+                            <i class="fa-brands fa-facebook-f"></i>
 
-
-                        <div class="contact-item">
-
-                            <span>📱</span>
-
-                            <div>
-
-                                <strong>
-                                    TELÉFONO
-                                </strong>
-
-                                <a href="tel:0983498360">
-                                    098 349 8360
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="contact-item">
-
-                            <span>✉️</span>
-
-                            <div>
-
-                                <strong>
-                                    CORREO
-                                </strong>
-
-                                <a
-                                    href="mailto:zarateyordan@outlook.com"
-                                >
-                                    zarateyordan@outlook.com
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="contact-item">
-
-                            <span>📍</span>
-
-                            <div>
-
-                                <strong>
-                                    ECUADOR
-                                </strong>
-
-                                <p>
-                                    Servicio de seguridad
-                                    profesional.
-                                </p>
-
-                            </div>
-
-                        </div>
+                        </a>
 
                     </div>
 
+                </div>
 
 
-                    <!-- FORMULARIO -->
+                <!-- FORMULARIO -->
+                <div class="contact-form">
 
-                    <div class="contact-form">
+                    <h3>
+                        SOLICITA INFORMACIÓN
+                    </h3>
 
-                        <h3>
-                            SOLICITA INFORMACIÓN
-                        </h3>
+                    <form id="contactForm">
 
-                        <form id="contactForm">
-
-                            <div class="form-row">
-
-                                <input
-                                    type="text"
-                                    id="nombre"
-                                    placeholder="Nombre"
-                                    required
-                                >
-
-                                <input
-                                    type="tel"
-                                    id="telefono"
-                                    placeholder="Teléfono"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <input
-                                type="email"
-                                id="correo"
-                                placeholder="Correo electrónico"
-                                required
-                            >
-
+                        <div class="form-row">
 
                             <input
                                 type="text"
-                                id="asunto"
-                                placeholder="Asunto"
-                            >
-
-
-                            <textarea
-                                id="mensaje"
-                                placeholder="Escribe tu mensaje"
-                                rows="6"
+                                placeholder="Nombre"
                                 required
-                            ></textarea>
-
-
-                            <button
-                                type="submit"
                             >
-                                ENVIAR CONSULTA
-                            </button>
 
-                        </form>
+                            <input
+                                type="text"
+                                placeholder="Apellido"
+                                required
+                            >
 
-                    </div>
+                        </div>
+
+
+                        <input
+                            type="email"
+                            placeholder="Correo electrónico"
+                            required
+                        >
+
+
+                        <input
+                            type="tel"
+                            placeholder="Teléfono"
+                            required
+                        >
+
+
+                        <textarea
+                            placeholder="Escribe tu mensaje"
+                            rows="5"
+                            required
+                        ></textarea>
+
+
+                        <button type="submit">
+                            ENVIAR MENSAJE
+                        </button>
+
+                    </form>
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
-
+    </section>
 
 
     <!-- =========================
          FOOTER
     ========================== -->
-
     <footer class="footer">
 
-        <div class="container footer-grid">
+        <div class="footer-container">
 
-
-            <div class="footer-brand">
+            <div class="footer-logo">
 
                 <img
                     src="imagenes/logo.png"
-                    alt="Dragon Security"
+                    alt="Dragón Security"
                 >
-
-                <p>
-                    Seguridad que protege
-                    tu tranquilidad.
-                </p>
 
             </div>
 
 
-            <div>
-
-                <h3>
-                    ENLACES
-                </h3>
+            <div class="footer-links">
 
                 <a href="#inicio">
                     Inicio
                 </a>
 
-                <a href="#nosotros">
+                <a href="#quienes-somos">
                     Quiénes somos
                 </a>
 
@@ -796,80 +576,59 @@
             </div>
 
 
-            <div>
+            <div class="footer-social">
 
-                <h3>
-                    CONTACTO
-                </h3>
+                <a href="https://wa.me/593983498360"
+                   target="_blank">
 
-                <p>
-                    📱 098 349 8360
-                </p>
+                    <i class="fa-brands fa-whatsapp"></i>
 
-                <p>
-                    ✉️ zarateyordan@outlook.com
-                </p>
+                </a>
 
-            </div>
+                <a href="#contacto">
 
+                    <i class="fa-brands fa-facebook-f"></i>
 
-            <div>
-
-                <h3>
-                    REDES SOCIALES
-                </h3>
-
-                <div class="socials">
-
-                    <a
-                        href="https://wa.me/593983498360"
-                        target="_blank"
-                        aria-label="WhatsApp"
-                    >
-                        WA
-                    </a>
-
-                    <a
-                        href="#"
-                        aria-label="Facebook"
-                    >
-                        f
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
         </div>
 
 
-        <div class="footer-bottom">
+        <div class="copyright">
 
-            <p>
-                © 2026 Dragon Security.
-                Todos los derechos reservados.
-            </p>
+            © 2026 Dragón Security Cia. Ltda.
+            Todos los derechos reservados.
 
         </div>
 
     </footer>
 
 
-
-    <!-- =========================
-         BOTÓN WHATSAPP
-    ========================== -->
-
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
     <a
-        class="whatsapp"
-        href="https://wa.me/593983498360?text=Hola%20Dragon%20Security,%20deseo%20información%20sobre%20sus%20servicios."
+        href="https://wa.me/593983498360"
         target="_blank"
-        aria-label="Contactar por WhatsApp"
-    >
-        ☎
+        class="whatsapp-float"
+        aria-label="Contactar por WhatsApp">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
     </a>
 
 
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button
+        id="backToTop"
+        class="back-to-top">
+
+        <i class="fa-solid fa-chevron-up"></i>
+
+    </button>
+
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>

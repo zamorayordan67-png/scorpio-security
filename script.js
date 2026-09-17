@@ -1,129 +1,84 @@
-/* ==========================================
-   MENÚ CELULAR
-========================================== */
+// ========================================
+// MENÚ CELULAR
+// ========================================
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
 
-menuToggle.addEventListener("click", function () {
+menuButton.addEventListener("click", () => {
 
-    navMenu.classList.toggle("active");
+    navigation.classList.toggle("active");
 
 });
 
 
-/* ==========================================
-   CERRAR MENÚ AL SELECCIONAR
-========================================== */
+// ========================================
+// CERRAR MENÚ AL HACER CLICK
+// ========================================
 
-const navLinks = document.querySelectorAll(".nav a");
+const navigationLinks =
+    document.querySelectorAll(".navigation a");
 
-navLinks.forEach(function (link) {
+navigationLinks.forEach(link => {
 
-    link.addEventListener("click", function () {
+    link.addEventListener("click", () => {
 
-        navMenu.classList.remove("active");
+        navigation.classList.remove("active");
 
     });
 
 });
 
 
-/* ==========================================
-   FORMULARIO
-========================================== */
+// ========================================
+// BOTÓN VOLVER ARRIBA
+// ========================================
 
-const contactForm = document.getElementById("contactForm");
+const backToTop =
+    document.getElementById("backToTop");
 
-contactForm.addEventListener("submit", function (event) {
+window.addEventListener("scroll", () => {
 
-    event.preventDefault();
+    if (window.scrollY > 400) {
 
-    const nombre =
-        document.getElementById("nombre").value;
+        backToTop.classList.add("show");
 
-    const telefono =
-        document.getElementById("telefono").value;
+    } else {
 
-    const correo =
-        document.getElementById("correo").value;
+        backToTop.classList.remove("show");
 
-    const asunto =
-        document.getElementById("asunto").value;
-
-    const mensaje =
-        document.getElementById("mensaje").value;
-
-
-    const texto =
-        `Hola Dragon Security.
-
-Nombre: ${nombre}
-
-Teléfono: ${telefono}
-
-Correo: ${correo}
-
-Asunto: ${asunto}
-
-Mensaje:
-${mensaje}`;
-
-
-    const whatsapp =
-        "https://wa.me/593983498360?text=" +
-        encodeURIComponent(texto);
-
-
-    window.open(whatsapp, "_blank");
+    }
 
 });
 
 
-/* ==========================================
-   ANIMACIÓN AL HACER SCROLL
-========================================== */
+backToTop.addEventListener("click", () => {
 
-const elements =
-    document.querySelectorAll(
-        ".service-card, .about-box, .work-card"
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+
+// ========================================
+// FORMULARIO
+// ========================================
+
+const contactForm =
+    document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    alert(
+        "Gracias por contactar a Dragón Security. " +
+        "Pronto nos comunicaremos contigo."
     );
-
-
-const observer =
-    new IntersectionObserver(
-        function (entries) {
-
-            entries.forEach(function (entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.15
-        }
-    );
-
-
-elements.forEach(function (element) {
-
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity 0.6s ease, transform 0.6s ease";
-
-    observer.observe(element);
 
 });
