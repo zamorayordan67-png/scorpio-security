@@ -25,9 +25,9 @@ p {
 }
 
 button {
-    background-color: blue;
+    background-color: lawngreen;
     color: white;
-    padding: 12px 25px;
+    padding: 10px 180px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
